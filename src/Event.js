@@ -24,30 +24,6 @@ class Event {
         app.appendChild(card)
     }
 
-
-    static eventModalHandler(addBtn) {
-        addBtn.addEventListener('click', () => {
-            Event.createEventForm()
-        })
-    }
-
-    static createEventForm() {
-        modal.style.display = "block"
-        const eventForm = document.createElement('form')
-        modalContent.append(eventForm)
-        const eventNameInput = document.createElement('input')
-        eventNameInput.name = 'name'
-        const eventDescInput = document.createElement('textarea')
-        eventDescInput.name = 'description'
-        const eventLocationInput = document.createElement('textarea')
-        eventLocationInput.name = 'location'
-        const eventDurationInput = document.createElement('input')
-        eventDurationInput.name = 'duration'
-        const eventCostInput = document.createElement('input')
-        eventCostInput.name = 'cost'
-        eventForm.append(eventNameInput, eventDescInput, eventLocationInput, eventDurationInput, eventCostInput)
-    }
-
     cardContent(card) {
         const { name, description, duration, cost, location } = this.event
         const eventName = document.createElement('h2')
@@ -65,38 +41,64 @@ class Event {
         card.append(eventName, eventDesc, eventLocation, eventDurationCost)
     }
 
-    createEventForm(){
-        const eventForm = document.createElement('form')
-        modalContent.append(eventForm)
-        const eventNameInput = document.createElement('input')
-        eventNameInput.name = 'name'
-        const eventDescInput = document.createElement('textarea')
-        eventDescInput.name = 'description'
-        const eventLocationInput = document.createElement('textarea')
-        eventLocationInput.name = 'location'
-        const eventDurationInput = document.createElement('input')
-        eventDurationInput.name = 'duration'
-        const eventCostInput = document.createElement('input')
-        eventCostInput.name = 'cost'
-        eventForm.append(eventNameInput, eventDescInput, eventLocationInput, eventDurationInput, eventCostInput)
-
-        // eventForm.addEventListener('submit', this.handleFormSubmit)
+    static eventModalHandler(addBtn) {
+        addBtn.addEventListener('click', () => {
+            Event.createEventForm()
+        })
     }
 
-//     handleFormSubmit(event){
-//         event.preventDefault()
-//         const newEvent = {
-//           name: event.target["name"].value,
-//           description: event.target["description"].value,
-//           location: event.target["location"].value,
-//           duration: event.target["duration"].value,
-//           cost: event.target["cost"].value
-//         }
-//         ApiService.postEvent(newEvent)
-//           .then(event => {
-//             new Event (event)
-//           })
-//           .catch(error => alert(error))
-//         event.target.reset()
-//       }
+    static createEventForm() {
+        modal.style.display = "block"
+        const eventForm = document.createElement('form')
+        modalContent.append(eventForm)
+        Event.createFormContent(eventForm)
+        eventForm.addEventListener('submit', Event.handleFormSubmit)
+    }
+
+    static createFormContent(eventForm) {
+        const eventNameLabel = document.createElement('label')
+        eventNameLabel.innerText = "Event Name:"
+        const eventNameInput = document.createElement('input')
+        eventNameInput.name = 'name'
+        const eventDescLabel = document.createElement('label')
+        eventDescLabel.innerText = "Event Description:"
+        const eventDescInput = document.createElement('textarea')
+        eventDescInput.name = 'description'
+        const eventLocationLabel = document.createElement('label')
+        eventLocationLabel.innerText = "Event Location:"
+        const eventLocationInput = document.createElement('textarea')
+        eventLocationInput.name = 'location'
+        const eventDurationLabel = document.createElement('label')
+        eventDurationLabel.innerText = "Event Duration:"
+        const eventDurationInput = document.createElement('input')
+        eventDurationInput.name = 'duration'
+        const eventCostLabel = document.createElement('label')
+        eventCostLabel.innerText = "Event Cost:"
+        const eventCostInput = document.createElement('input')
+        eventCostInput.name = 'cost'
+        const categorySelector = document.createElement()
+    
+        const submitBtn = document.createElement('button')
+        submitBtn.innerText = "Submit"
+        eventForm.append(eventNameLabel, eventNameInput, eventDescLabel,
+            eventDescInput, eventLocationLabel, eventLocationInput, eventLocationLabel,
+            eventDurationLabel, eventDurationInput, eventCostLabel, eventCostInput, submitBtn)
+    }
+
+    static handleFormSubmit(event) {
+        event.preventDefault()
+        const newEvent = {
+          name: event.target["name"].value,
+          description: event.target["description"].value,
+          location: event.target["location"].value,
+          duration: event.target["duration"].value,
+          cost: event.target["cost"].value
+        }
+        ApiService.postEvent(newEvent)
+          .then(event => {
+            new Event (event)
+          })
+          .catch(error => alert(error))
+        event.target.reset()
+      }
 }
