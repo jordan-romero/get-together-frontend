@@ -8,6 +8,7 @@ const app = document.createElement('div')
 const eventBtn = document.querySelector('#event-btn')
 const modal = document.querySelector('#myModal')
 const modalContent = document.querySelector('.modal-content')
+const addBtn = document.createElement('button')
 
 createAppDiv();
 displayEvents(); 

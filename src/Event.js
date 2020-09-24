@@ -5,18 +5,6 @@ class Event {
         console.log(event)
     }
 
-    static addEventBtn = () => {
-        const addBtn = document.createElement('button')
-        addBtn.className = 'btn'
-        addBtn.id = 'add-event-btn'
-        addBtn.innerText = "Create Event"
-        app.appendChild(addBtn) 
-
-        Event.eventModalHandler(addBtn)
-    }
-    
-
-
     createCard = () => {
         const card = document.createElement('div')
         card.className = "card text-center"
@@ -44,6 +32,16 @@ class Event {
         eventDurationCost.className = 'card-footer'
         eventDurationCost.innerText = `${name} will cost ${cost} dollars and will be ${duration} long.`
         card.append(eventName, eventDesc, eventLocation, eventDurationCost)
+    }
+
+    static addEventBtn = () => {
+        // const addBtn = document.createElement('button')
+        addBtn.className = 'btn'
+        addBtn.id = 'add-event-btn'
+        addBtn.innerText = "Create Event"
+        app.appendChild(addBtn) 
+
+        Event.eventModalHandler(addBtn)
     }
 
     static eventModalHandler(addBtn) {
