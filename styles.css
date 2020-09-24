@@ -1,33 +1,108 @@
+body {
+   background-image: 
+   linear-gradient(
+      rgba(247,136,47, 0.25), 
+      rgba(247, 136, 47, 0.25)
+    ),
+   url(https://images.unsplash.com/photo-1599751449318-f55b9187cdb4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80); 
+   background-size: 100%;
+   background-attachment: fixed;
+   
+
+
+}
+
+
+#event-btn {
+  background-color: #6b7a8f;
+  color: #f7c331;
+
+}
+
+#dates-btn {
+  background-color: #6b7a8f;
+  color: #f7c331;
+}
+
+#add-event-btn {
+  background-color: #6b7a8f;
+  color: #f7c331;
+}
+
+.card {
+  width: 50rem; 
+  height: auto; 
+  border: 2px solid #6b7a8f; 
+  background-color: #dcc7aa;
+  margin-bottom: 3rem; 
+  display: block;
+  margin: 0 auto; 
+  float: none; 
+  margin-bottom: 10px; 
+}
+
+#card-head {
+  background-color: #6b7a8f;
+  color: #f7c331;
+}
+
+#desc-p {
+  background-color: #dcc7aa;
+  color: #6b7a8f;
+}
+
+#location-p {
+  background-color: #dcc7aa;
+  color: #6b7a8f;
+}
+
+#dur-cost-p {
+  background-color: #8293ab;
+  color: #f7c331;
+}
+
 /*///////////////////////////*/
 
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 20rem;
+  top: 0;
+  width: 50%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(152, 102, 42, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: black;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  background-image: 
+  linear-gradient(
+      rgba(247,136,47, 0.35), 
+      rgba(247, 136, 47, 0.35)
+    ),
+  url('https://images.unsplash.com/photo-1539541417736-3d44c90da315?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
+  background-size: cover;
+  display: block;
+  text-align: center;
+}
+
+.event-form {
+  display: block;
   
-  /* Modal Content */
-  .modal-content {
-    background-color: black;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    display: block;
-    text-align: center;
-  }
+}
   
-  .modal-form {
-    display: inline-block;
-    margin: auto;
-  }
+#event-submit {
+  background-color: #6b7a8f;
+  color: #f7c331;
+}
   
