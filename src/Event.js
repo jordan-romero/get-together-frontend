@@ -51,11 +51,15 @@ class Event {
         modal.style.display = "block"
         const eventForm = document.createElement('form')
         modalContent.append(eventForm)
-        Event.createFormContent(eventForm)
+        const { categorySelector, occasionSelector } = Event.eventFormContent(eventForm)
+        Event.categoryDropdown(categorySelector)
+        Event.occasionDropdown(occasionSelector) 
         eventForm.addEventListener('submit', Event.handleFormSubmit)
     }
 
-    static createFormContent(eventForm) {
+    
+
+    static eventFormContent(eventForm) {
         const eventNameLabel = document.createElement('label')
         eventNameLabel.innerText = "Event Name:"
         const eventNameInput = document.createElement('input')
@@ -76,23 +80,56 @@ class Event {
         eventCostLabel.innerText = "Event Cost:"
         const eventCostInput = document.createElement('input')
         eventCostInput.name = 'cost'
-        const categorySelector = document.createElement()
-    
+        const categorySelector = document.createElement('select')
+        categorySelector.id = 'select-category'
+        categorySelector.name = 'category'
+        const occasionSelector = document.createElement('select')
+        occasionSelector.id = 'select-occasion'
+        occasionSelector.name = 'occasion'
         const submitBtn = document.createElement('button')
         submitBtn.innerText = "Submit"
         eventForm.append(eventNameLabel, eventNameInput, eventDescLabel,
             eventDescInput, eventLocationLabel, eventLocationInput, eventLocationLabel,
-            eventDurationLabel, eventDurationInput, eventCostLabel, eventCostInput, submitBtn)
+            eventDurationLabel, eventDurationInput, eventCostLabel, eventCostInput,
+            categorySelector, occasionSelector, submitBtn)
+        return { categorySelector, occasionSelector }
+    }
+
+    static occasionDropdown(occasionSelector) {
+        ApiService.getAllOccasions()
+            .then(occasions => {
+                occasions.forEach(occasion => {
+                    let occasionOption = document.createElement("option")
+                    occasionOption.textContent = occasion.name
+                    occasionOption.value = occasion.name
+                    occasionSelector.appendChild(occasionOption)
+                })
+            })
+    }
+
+    static categoryDropdown(categorySelector) {
+        ApiService.getAllCategories()
+            .then(categories => {
+                categories.forEach(category => {
+                    let option = document.createElement("option")
+                    option.textContent = category.name
+                    option.value = category.name
+                    categorySelector.appendChild(option)
+                })
+            })
     }
 
     static handleFormSubmit(event) {
         event.preventDefault()
+        modal.style.display = "none"
         const newEvent = {
           name: event.target["name"].value,
           description: event.target["description"].value,
           location: event.target["location"].value,
           duration: event.target["duration"].value,
-          cost: event.target["cost"].value
+          cost: event.target["cost"].value,
+          category_name: event.target.category.value,
+          occasion_name: event.target.occasion.value
         }
         ApiService.postEvent(newEvent)
           .then(event => {

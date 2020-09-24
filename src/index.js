@@ -1,6 +1,8 @@
 console.log("hello from index")
 const BASE_URL = 'http://localhost:3000'
 const EVENT_URL = `${BASE_URL}/events` 
+const CATEGORY_URL = `${BASE_URL}/categories`
+const OCCASION_URL = `${BASE_URL}/occasions`
 const body = document.querySelector('body')
 const app = document.createElement('div')
 const eventBtn = document.querySelector('#event-btn')

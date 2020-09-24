@@ -23,4 +23,14 @@ class ApiService {
           }
         })
     }
+
+    static getAllCategories(){
+      return fetch(CATEGORY_URL)
+      .then(res => res.json())
+    }
+
+    static getAllOccasions(){
+      return fetch(OCCASION_URL)
+      .then(res => res.json())
+    }
 }
