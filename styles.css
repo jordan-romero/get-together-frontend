@@ -46,6 +46,11 @@ body {
   color: #f7c331;
 }
 
+#event-delete-btn {
+  float: right; 
+  color: #f7882f;;
+}
+
 #desc-p {
   background-color: #dcc7aa;
   color: #6b7a8f;

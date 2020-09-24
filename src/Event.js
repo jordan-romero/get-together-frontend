@@ -15,10 +15,15 @@ class Event {
 
     cardContent(card) {
         const { name, description, duration, cost, location } = this.event
-        const eventName = document.createElement('h2')
+        const eventName = document.createElement('div')
         eventName.id = 'card-head'
-        eventName.className = 'card-header'
+        eventName.className = 'card-header h2'
         eventName.innerText = name
+        const deleteBtn = document.createElement('button')
+        deleteBtn.className = 'btn'
+        deleteBtn.innerText = 'X'
+        deleteBtn.id = 'event-delete-btn'
+        eventName.appendChild(deleteBtn)
         const eventDesc = document.createElement('p')
         eventDesc.className = 'card-body'
         eventDesc.id = 'desc-p'
@@ -35,18 +40,19 @@ class Event {
     }
 
     static addEventBtn = () => {
-        // const addBtn = document.createElement('button')
+        const addBtn = document.createElement('button')
         addBtn.className = 'btn'
         addBtn.id = 'add-event-btn'
         addBtn.innerText = "Create Event"
         app.appendChild(addBtn) 
 
-        Event.eventModalHandler(addBtn)
+        Event.eventListenerHandler(addBtn)
     }
 
-    static eventModalHandler(addBtn) {
+    static eventListenerHandler(addBtn, card) {
         addBtn.addEventListener('click', () => {
             Event.createEventForm()
+
         })
     }
 
@@ -169,12 +175,18 @@ class Event {
           category_name: event.target.category.value,
           occasion_name: event.target.occasion.value
         }
+        Event.postEvent(newEvent, event)
+      }
+
+    static postEvent(newEvent, event) {
         ApiService.postEvent(newEvent)
-          .then(event => {
-            new Event (event)
-          })
-          .catch(error => alert(error))
+            .then(event => {
+                new Event(event)
+            })
+            .catch(error => alert(error))
         event.target.reset()
         modal.querySelector("form").remove()
-      }
+    }
+
+  
 }

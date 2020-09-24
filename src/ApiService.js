@@ -33,4 +33,11 @@ class ApiService {
       return fetch(OCCASION_URL)
       .then(res => res.json())
     }
+
+    static removeEvent(eventId){
+      return fetch(`EVENT_URL/${eventId}`, {
+        method: "DELETE"
+      })
+        .then(r => r.json())
+    }
 }
