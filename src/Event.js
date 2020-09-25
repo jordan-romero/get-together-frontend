@@ -119,6 +119,7 @@ class Event {
         eventCostLabel.innerText = "Event Cost:"
         const eventCostInput = document.createElement('input')
         eventCostInput.name = 'cost'
+        eventCostInput.type = 'number'
         eventCostInput.className = 'form-control'
         eventCostDiv.append(eventCostLabel, eventCostInput)
 
