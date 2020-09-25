@@ -22,6 +22,8 @@ function createAppDiv() {
 function displayEvents(){
     eventBtn.addEventListener("click", () => {
         app.innerHTML = ""
+        body.style.backgroundColor = '#fae29f'
+        body.style.backgroundImage = 'none'
         initEvents(); 
         Event.addEventBtn(); 
     })

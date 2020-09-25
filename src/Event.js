@@ -17,17 +17,14 @@ class Event {
         const { name, description, duration, cost, location } = this.event
         const eventName = document.createElement('div')
         eventName.id = 'card-head'
-        eventName.className = 'card-header h2 pr-5 mr-5'
+        eventName.className = 'card-header h2 pl-5'
         eventName.innerText = name
         const deleteBtn = document.createElement('button')
         deleteBtn.className = 'btn'
         deleteBtn.innerText = 'X'
         deleteBtn.id = 'event-delete-btn'
         this.deleteEvent(deleteBtn, card)
-        const catName = document.createElement('h3')
-        catName.innerText = this.event.category.name
-        catName.id = 'cat-name-h3'
-        eventName.append(deleteBtn, catName)
+        eventName.appendChild(deleteBtn)
         const eventDesc = document.createElement('p')
         eventDesc.className = 'card-body'
         eventDesc.id = 'desc-p'
@@ -56,7 +53,7 @@ class Event {
 
     renderCardBackground(card) {
         if (this.event.category.name === "Art & Culture") {
-            card.style.backgroundImage = "url(https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80)"
+            card.style.backgroundImage = "url(https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80)"; 
         } else if (this.event.category.name === "Comedy") {
             card.style.backgroundImage = "url(https://images.unsplash.com/photo-1527224857830-43a7acc85260?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80)"
             card.style.backgroundSize = "47rem 20rem"
@@ -156,17 +153,23 @@ class Event {
 
         const eventCatDiv = document.createElement('div')
         eventCatDiv.className = 'form-group'
+        const categorySelectorLabel = document.createElement('label')
+        categorySelectorLabel.innerText = 'Category:'
         const categorySelector = document.createElement('select')
         categorySelector.id = 'select-category'
         categorySelector.name = 'category'
-        eventCatDiv.append(categorySelector)
+        categorySelector.className = 'form-control'
+        eventCatDiv.append(categorySelectorLabel, categorySelector)
         
         const eventOccasionDiv = document.createElement('div')
         eventOccasionDiv.className = 'form-group'
+        const occasionSelectorLabel = document.createElement('label')
+        occasionSelectorLabel.innerText = 'Occasion:'
         const occasionSelector = document.createElement('select')
         occasionSelector.id = 'select-occasion'
         occasionSelector.name = 'occasion'
-        eventOccasionDiv.append(occasionSelector)
+        occasionSelector.className = 'form-control'
+        eventOccasionDiv.append(occasionSelectorLabel, occasionSelector)
 
         const submitBtn = document.createElement('button')
         submitBtn.className = 'btn'
