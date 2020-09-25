@@ -23,6 +23,7 @@ class Event {
         deleteBtn.className = 'btn'
         deleteBtn.innerText = 'X'
         deleteBtn.id = 'event-delete-btn'
+        this.deleteEvent(deleteBtn, card)
         eventName.appendChild(deleteBtn)
         const eventDesc = document.createElement('p')
         eventDesc.className = 'card-body'
@@ -47,6 +48,12 @@ class Event {
         app.appendChild(addBtn) 
 
         Event.eventListenerHandler(addBtn)
+    }
+
+    deleteEvent(deleteBtn, card) {
+        deleteBtn.addEventListener('click', () => {
+            ApiService.removeEvent(this.event.id).then(card.remove())
+        })
     }
 
     static eventListenerHandler(addBtn, card) {
@@ -188,5 +195,5 @@ class Event {
         modal.querySelector("form").remove()
     }
 
-  
+    
 }
