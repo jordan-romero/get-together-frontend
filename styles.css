@@ -30,39 +30,55 @@ body {
 }
 
 .card {
+  position: relative; 
   width: 50rem; 
   height: auto; 
-  border: 2px solid #6b7a8f; 
   background-color: #dcc7aa;
   margin-bottom: 3rem; 
   display: block;
   margin: 0 auto; 
   float: none; 
   margin-bottom: 10px; 
+  background-size: 100%;
+}
+
+.card::after {    
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-image:
+  opacity(0.95);
 }
 
 #card-head {
-  background-color: #6b7a8f;
-  color: #f7c331;
+  
+  color: #f7c331; 
+  padding: 1rem; 
 }
+
 
 #event-delete-btn {
   float: right; 
-  color: #f7882f;;
+  color: #f7882f;
+}
+
+#cat-name-h3 {
+  float: left;
+  color: #f7882f;
 }
 
 #desc-p {
-  background-color: #dcc7aa;
   color: #6b7a8f;
 }
 
 #location-p {
-  background-color: #dcc7aa;
   color: #6b7a8f;
 }
 
 #dur-cost-p {
-  background-color: #8293ab;
   color: #f7c331;
 }
 
