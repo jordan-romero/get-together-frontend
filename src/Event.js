@@ -2,7 +2,7 @@ class Event {
     constructor(event){
         this.event = event
         this.card = this.createCard()
-        console.log(event)
+        
     }
 
     createCard = () => {
@@ -37,9 +37,78 @@ class Event {
         eventDurationCost.id = 'dur-cost-p'
         eventDurationCost.className = 'card-footer'
         eventDurationCost.innerText = `${name} will cost ${cost} dollars and will be ${duration} long.`
+        const editBtn = document.createElement('button')
+        editBtn.className = 'btn btn-sm'
+        editBtn.id = 'edit-btn'
+        editBtn.innerText = 'Edit'
+        eventDurationCost.append(editBtn)
+        const editEventForm = document.createElement('form')
+        editBtn.addEventListener('click', () => {
+            console.log(this.event)
+            modal.style.display = "block"
+            editEventForm.id = 'edit-event-form'
+            modalContent.append(editEventForm)
+            editEventForm.innerHTML += `
+            <div class="form-group">
+                <label>Event Name:</label>
+                <input name="name" value="${name}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Event Description:</label>
+                <textarea name="description" class="form-control">${description}</textarea>
+            </div>
+            <div class="form-group">
+                <label>Event Location:</label>
+                <textarea name="location" class="form-control">${location}</textarea>
+            </div>
+            <div class="form-group">   
+                <label>Event Duration:</label>
+                <input name="duration" value="${duration}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Event Cost:</label>
+                <input name="cost" value="${cost}" type="number" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Category:</label>
+                    <select id="select-category" name="category" class="form-control">
+                        <option value="Art &amp; Culture">Art &amp; Culture</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Outdoor Activities">Outdoor Activities</option>
+                        <option value="Film &amp; TV">Film &amp; TV</option>
+                        <option value="Food &amp; Drink">Food &amp; Drink</option>
+                        <option value="Live Music">Live Music</option>
+                        <option value="LGBTQ+">LGBTQ+</option>
+                        <option value="Other">Other</option>
+                    </select>
+            </div>
+            <div class="form-group">
+                <label>Occasion:</label>
+                    <select id="select-occasion" name="occasion" class="form-control">
+                        <option value="Hot Date">Hot Date</option>
+                        <option value="Shannon's Birthday">Shannon's Birthday</option>
+                        <option value="Anniversary">Anniversary</option>
+                    </select>
+            </div>
+            <button class="btn" id="event-submit">Submit</button>`
+        })
+        editEventForm.addEventListener("submit", (e) => {
+            e.preventDefault()
+            console.log(this.event.id)
+            const data = {
+              name: e.target.name.value,
+              description: e.target.description.value,
+              location: e.target.location.value,
+              duration: e.target.duration.value,
+              cost: e.target.cost.value
+            }
+            ApiService.updateEvent(this.event.id, data).then(console.log)
+            
+        })
         this.renderCardBackground(card)
         card.append(eventName, eventDesc, eventLocation, eventDurationCost)
-    }
+
+}
 
     static addEventBtn = () => {
         const addBtn = document.createElement('button')
@@ -228,6 +297,10 @@ class Event {
             .catch(error => alert(error))
         event.target.reset()
         modal.querySelector("form").remove()
+    }
+
+    static patchEvent(event) {
+
     }
 
     

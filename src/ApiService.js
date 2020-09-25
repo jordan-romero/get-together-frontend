@@ -40,4 +40,16 @@ class ApiService {
       })
         .then(res=> res.json())
     }
+
+    static updateEvent = (eventId, event) => {
+      return fetch(`${EVENT_URL}/${eventId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(event),
+      })
+      .then(res => res.json())
+    }
+  
 }

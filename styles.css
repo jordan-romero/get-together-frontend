@@ -69,6 +69,12 @@ body {
   color: #344357;
 }
 
+#edit-btn {
+  background-color: #6b7a8f;
+  color: #f7c331;
+  float: left;
+}
+
 /*///////////////////////////*/
 
 /* The Modal (background) */
