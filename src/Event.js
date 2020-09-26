@@ -43,12 +43,58 @@ class Event {
         editBtn.innerText = 'Edit'
         eventDurationCost.append(editBtn)
         const editEventForm = document.createElement('form')
+        this.editEventFormHandler(editBtn, editEventForm, name, description, location, duration, cost)
+        editEventForm.addEventListener("submit", (e) => {
+            e.preventDefault()
+            console.log(this.event.id)
+            const data = {
+              name: e.target.name.value,
+              description: e.target.description.value,
+              location: e.target.location.value,
+              duration: e.target.duration.value,
+              cost: e.target.cost.value
+            }
+            this.updateEventHandler(data, card)
+            
+        })
+        this.renderCardBackground(card)
+        card.append(eventName, eventDesc, eventLocation, eventDurationCost)
+
+}
+
+    static addEventBtn = () => {
+        const addBtn = document.createElement('button')
+        addBtn.className = 'btn'
+        addBtn.id = 'add-event-btn'
+        addBtn.innerText = "Create Event"
+        app.appendChild(addBtn) 
+
+        Event.eventListenerHandler(addBtn)
+    }
+
+    updateEventHandler(data, card) {
+        ApiService.updateEvent(this.event.id, data)
+            .then(updatedEvent => {
+                this.event = updatedEvent
+                card.innerHTML = ''
+                this.cardContent(card)
+                modal.style.display = "none"
+                modal.querySelector("form").remove()
+            })
+    }
+
+    editEventFormHandler(editBtn, editEventForm, name, description, location, duration, cost) {
         editBtn.addEventListener('click', () => {
             console.log(this.event)
             modal.style.display = "block"
             editEventForm.id = 'edit-event-form'
             modalContent.append(editEventForm)
-            editEventForm.innerHTML += `
+            this.renderEditFormContent(editEventForm, name, description, location, duration, cost)
+        })
+    }
+
+    renderEditFormContent(editEventForm, name, description, location, duration, cost) {
+        editEventForm.innerHTML += `
             <div class="form-group">
                 <label>Event Name:</label>
                 <input name="name" value="${name}" class="form-control">
@@ -91,33 +137,6 @@ class Event {
                     </select>
             </div>
             <button class="btn" id="event-submit">Submit</button>`
-        })
-        editEventForm.addEventListener("submit", (e) => {
-            e.preventDefault()
-            console.log(this.event.id)
-            const data = {
-              name: e.target.name.value,
-              description: e.target.description.value,
-              location: e.target.location.value,
-              duration: e.target.duration.value,
-              cost: e.target.cost.value
-            }
-            ApiService.updateEvent(this.event.id, data).then(console.log)
-            
-        })
-        this.renderCardBackground(card)
-        card.append(eventName, eventDesc, eventLocation, eventDurationCost)
-
-}
-
-    static addEventBtn = () => {
-        const addBtn = document.createElement('button')
-        addBtn.className = 'btn'
-        addBtn.id = 'add-event-btn'
-        addBtn.innerText = "Create Event"
-        app.appendChild(addBtn) 
-
-        Event.eventListenerHandler(addBtn)
     }
 
     renderCardBackground(card) {
@@ -299,9 +318,4 @@ class Event {
         modal.querySelector("form").remove()
     }
 
-    static patchEvent(event) {
-
-    }
-
-    
 }
