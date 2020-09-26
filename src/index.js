@@ -5,12 +5,14 @@ const CATEGORY_URL = `${BASE_URL}/categories`
 const OCCASION_URL = `${BASE_URL}/occasions`
 const body = document.querySelector('body')
 const app = document.createElement('div')
-const eventBtn = document.querySelector('#event-btn')
+const eventBtn = document.createElement('button')
+const occasionBtn = document.createElement('button')
 const modal = document.querySelector('#myModal')
 const modalContent = document.querySelector('.modal-content')
 
 
 createAppDiv();
+createHeaderDiv();
 displayEvents(); 
 
 function createAppDiv() {
@@ -19,11 +21,47 @@ function createAppDiv() {
     console.log(app)
 }
 
+function createHeaderDiv() {
+  const header = document.createElement('div');
+  header.className = 'display-1 text-center';
+  header.id = 'header';
+  header.innerText = 'get-together';
+  app.appendChild(header);
+  const subheader = createSubheaderDiv(header)
+  createBtnDiv(subheader)
+}
+
+
+function createSubheaderDiv(header) {
+  const subheader = document.createElement('div')
+  subheader.className = 'h4 text-center'
+  subheader.id = 'subheader'
+  subheader.innerText = 'Planning made Easy'
+  header.appendChild(subheader)
+  return subheader
+}
+
+function createBtnDiv(subheader) {
+  const eventBtnDiv = document.createElement('div')
+  subheader.appendChild(eventBtnDiv)
+  eventBtn.className = 'btn btn-xl'
+  eventBtn.id = 'event-btn'
+  eventBtn.innerText = 'Events'
+  eventBtnDiv.append(eventBtn)
+  const occasionBtnDiv = document.createElement('div')
+  subheader.append(occasionBtnDiv)
+  occasionBtn.className = 'btn'
+  occasionBtn.id = 'occasion-btn'
+  occasionBtn.innerText = 'get-togethers'
+  occasionBtnDiv.appendChild(occasionBtn)
+}
+
 function displayEvents(){
+    
     eventBtn.addEventListener("click", () => {
         app.innerHTML = ""
-        body.style.backgroundColor = '#fae29f'
-        body.style.backgroundImage = 'none'
+        // body.style.backgroundColor = '#fae29f'
+        // body.style.backgroundImage = 'none'
         initEvents(); 
         Event.addEventBtn(); 
     })
