@@ -4,6 +4,7 @@ const EVENT_URL = `${BASE_URL}/events`
 const CATEGORY_URL = `${BASE_URL}/categories`
 const OCCASION_URL = `${BASE_URL}/occasions`
 const body = document.querySelector('body')
+const logo = document.querySelector('#logo')
 const app = document.createElement('div')
 const eventBtn = document.createElement('button')
 const occasionBtn = document.createElement('button')
@@ -12,14 +13,18 @@ const modalContent = document.querySelector('.modal-content')
 
 
 createAppDiv();
-createHeaderDiv();
+createHeaderDiv()
 displayEvents(); 
 displayOccasions(); 
+renderHome(); 
 
-function createAppDiv() {
-    app.setAttribute('id', 'app-div')
-    body.appendChild(app) 
-    console.log(app)
+
+function renderHome() {
+  logo.addEventListener('click', () => {
+    app.innerHTML = ''
+    createHeaderDiv()
+    createBtnDiv(subheader)
+  })
 }
 
 function createHeaderDiv() {
@@ -28,33 +33,39 @@ function createHeaderDiv() {
   header.id = 'header';
   header.innerText = 'get-together';
   app.appendChild(header);
-  const subheader = createSubheaderDiv(header)
-  createBtnDiv(subheader)
+  const subheader = createSubheaderDiv(header);
+  createBtnDiv(subheader);
 }
 
-
-function createSubheaderDiv(header) {
-  const subheader = document.createElement('div')
-  subheader.className = 'h4 text-center'
-  subheader.id = 'subheader'
-  subheader.innerText = 'Planning made Easy'
-  header.appendChild(subheader)
-  return subheader
+function createSubheaderDiv(header){
+  const subheader = document.createElement('div');
+  subheader.className = 'h4 text-center';
+  subheader.id = 'subheader';
+  subheader.innerText = 'Planning made Easy';
+  header.appendChild(subheader);
+  return subheader;
 }
 
 function createBtnDiv(subheader) {
-  const eventBtnDiv = document.createElement('div')
-  subheader.appendChild(eventBtnDiv)
-  eventBtn.className = 'btn btn-xl'
-  eventBtn.id = 'event-btn'
-  eventBtn.innerText = 'Events'
-  eventBtnDiv.append(eventBtn)
-  const occasionBtnDiv = document.createElement('div')
-  subheader.append(occasionBtnDiv)
-  occasionBtn.className = 'btn'
-  occasionBtn.id = 'occasion-btn'
-  occasionBtn.innerText = 'get-togethers'
-  occasionBtnDiv.appendChild(occasionBtn)
+  const eventBtnDiv = document.createElement('div');
+  subheader.appendChild(eventBtnDiv);
+  eventBtn.className = 'btn btn-xl';
+  eventBtn.id = 'event-btn';
+  eventBtn.innerText = 'Events';
+  eventBtnDiv.append(eventBtn);
+  const occasionBtnDiv = document.createElement('div');
+  subheader.append(occasionBtnDiv);
+  occasionBtn.className = 'btn';
+  occasionBtn.id = 'occasion-btn';
+  occasionBtn.innerText = 'get-togethers';
+  occasionBtnDiv.appendChild(occasionBtn);
+}
+
+
+function createAppDiv() {
+    app.setAttribute('id', 'app-div')
+    body.appendChild(app) 
+    console.log(app)
 }
 
 function displayEvents(){
@@ -83,7 +94,7 @@ function displayOccasions(){
 
 function initOccasions() {
   ApiService.getAllOccasions().then(occasions => {
-    occasions.forEach(console.log)
+    occasions.forEach(occasion => new Occasion(occasion))
   })
 }
 

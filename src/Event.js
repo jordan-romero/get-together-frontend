@@ -2,7 +2,6 @@ class Event {
     constructor(event){
         this.event = event
         this.card = this.createCard()
-        
     }
 
     createCard = () => {
@@ -11,6 +10,7 @@ class Event {
         card.dataset.id = this.event.id
         this.cardContent(card)
         app.appendChild(card)
+        return card
     }
 
     cardContent(card) {
