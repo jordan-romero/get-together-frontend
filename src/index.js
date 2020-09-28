@@ -14,6 +14,7 @@ const modalContent = document.querySelector('.modal-content')
 createAppDiv();
 createHeaderDiv();
 displayEvents(); 
+displayOccasions(); 
 
 function createAppDiv() {
     app.setAttribute('id', 'app-div')
@@ -71,6 +72,19 @@ function initEvents() {
     ApiService.getAllEvents().then(events => {
         events.forEach(event => new Event(event));
     });
+}
+
+function displayOccasions(){
+  occasionBtn.addEventListener('click', () => {
+    app.innerHTML = ''
+    initOccasions(); 
+  })
+}
+
+function initOccasions() {
+  ApiService.getAllOccasions().then(occasions => {
+    occasions.forEach(console.log)
+  })
 }
 
 // Get the <span> element that closes the modal

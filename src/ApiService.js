@@ -24,16 +24,6 @@ class ApiService {
         })
     }
 
-    static getAllCategories(){
-      return fetch(CATEGORY_URL)
-      .then(res => res.json())
-    }
-
-    static getAllOccasions(){
-      return fetch(OCCASION_URL)
-      .then(res => res.json())
-    }
-
     static removeEvent(eventId){
       return fetch(`${EVENT_URL}/${eventId}`, {
         method: "DELETE"
@@ -49,6 +39,16 @@ class ApiService {
         },
         body: JSON.stringify(event),
       })
+      .then(res => res.json())
+    }
+
+    static getAllCategories(){
+      return fetch(CATEGORY_URL)
+      .then(res => res.json())
+    }
+
+    static getAllOccasions(){
+      return fetch(OCCASION_URL)
       .then(res => res.json())
     }
   
