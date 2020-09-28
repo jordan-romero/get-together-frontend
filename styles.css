@@ -7,9 +7,7 @@ body {
    url(https://images.unsplash.com/photo-1599751449318-f55b9187cdb4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80); 
    background-size: 100%;
    background-attachment: fixed;
-  
-   font-family: 'Open Sans', sans-serif;
-
+   font-family: 'Rock Salt', cursive;
 }
 
 #header {
@@ -56,6 +54,7 @@ body {
 #add-event-btn {
   background-color: #6b7a8f;
   color: #f7c331;
+  margin-bottom: 2rem;
 }
 
 .card {
@@ -88,14 +87,19 @@ body {
 
 #desc-p {
   color: #344357;
+  font-family: 'Open Sans', sans-serif;
 }
 
 #location-p {
   color: #344357;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  font-size: x-large;
 }
 
 #dur-cost-p {
   color: #344357;
+  font-family: 'Open Sans', sans-serif;
 }
 
 #edit-btn {
@@ -143,7 +147,11 @@ body {
   display: block;
   
 }
-  
+
+#occ-opts {
+  font-family: 'Open Sans', sans-serif;
+}
+
 #event-submit {
   background-color: #6b7a8f;
   color: #f7c331;

@@ -64,7 +64,7 @@ class Event {
 
     static addEventBtn = () => {
         const addBtn = document.createElement('button')
-        addBtn.className = 'btn'
+        addBtn.className = 'btn btn-lg mx-auto d-block'
         addBtn.id = 'add-event-btn'
         addBtn.innerText = "Create Event"
         app.appendChild(addBtn) 
