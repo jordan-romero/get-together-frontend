@@ -16,7 +16,7 @@ class Occasion {
     cardContent(card) {
         const { name, date, time } = this.occasion
         const occNameDiv = document.createElement('div')
-        occNameDiv.className = "h2"
+        occNameDiv.className = "h2 card-header"
         occNameDiv.id = 'occ-div'
         occNameDiv.innerText = name
         const occDateDiv = document.createElement('div')
@@ -44,5 +44,14 @@ class Occasion {
         return occEventsUl
     }
 
+    static addOccasionBtn = () => {
+        const addBtn = document.createElement('button')
+        addBtn.className = 'btn btn-lg mx-auto d-block'
+        addBtn.id = 'add-occ-btn'
+        addBtn.innerText = "Create a Get-Together"
+        app.appendChild(addBtn) 
+
+        Occasion.eventListenerHandler(addBtn)
+    }
     
 }

@@ -6,7 +6,7 @@ class Event {
 
     createCard = () => {
         const card = document.createElement('div')
-        card.className = "card text-center"
+        card.className = "card text-center shadow-lg"
         card.dataset.id = this.event.id
         this.cardContent(card)
         app.appendChild(card)

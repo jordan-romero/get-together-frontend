@@ -22,6 +22,7 @@ renderHome();
 function renderHome() {
   logo.addEventListener('click', () => {
     app.innerHTML = ''
+    body.style.backgroundImage = "url(https://images.unsplash.com/photo-1599751449318-f55b9187cdb4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80)"
     createHeaderDiv()
     createBtnDiv(subheader)
   })
@@ -48,12 +49,14 @@ function createSubheaderDiv(header){
 
 function createBtnDiv(subheader) {
   const eventBtnDiv = document.createElement('div');
+  eventBtnDiv.className = 'row'
   subheader.appendChild(eventBtnDiv);
   eventBtn.className = 'btn btn-xl';
   eventBtn.id = 'event-btn';
   eventBtn.innerText = 'Events';
   eventBtnDiv.append(eventBtn);
   const occasionBtnDiv = document.createElement('div');
+  occasionBtnDiv.className = 'row'
   subheader.append(occasionBtnDiv);
   occasionBtn.className = 'btn';
   occasionBtn.id = 'occasion-btn';
@@ -74,6 +77,7 @@ function displayEvents(){
         app.innerHTML = ""
         // body.style.backgroundColor = '#fae29f'
         // body.style.backgroundImage = 'none'
+        body.style.backgroundImage = "url(https://images.unsplash.com/photo-1601191905893-d270babd8c87?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80)"
         initEvents(); 
         Event.addEventBtn(); 
     })
@@ -89,6 +93,7 @@ function displayOccasions(){
   occasionBtn.addEventListener('click', () => {
     app.innerHTML = ''
     initOccasions(); 
+    Occasion.addOccasionBtn(); 
   })
 }
 
