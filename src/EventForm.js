@@ -1,9 +1,5 @@
 class EventForm {
 
-    constructor(){
-        this.createEventForm()
-    }
-
     static eventListenerHandler(addBtn) {
         addBtn.addEventListener('click', () => {
             EventForm.createEventForm()
@@ -152,13 +148,13 @@ class EventForm {
     static editEventFormHandler(editBtn, editEventForm, name, description, location, duration, cost) {
         editBtn.addEventListener('click', () => {
             modal.style.display = "block"
-            editEventForm.id = 'edit-event-form'
             modalContent.append(editEventForm)
             EventForm.renderEditFormContent(editEventForm, name, description, location, duration, cost)
         })
     }
 
     static renderEditFormContent(editEventForm, name, description, location, duration, cost) {
+        editEventForm.innerHTML = ''
         editEventForm.innerHTML += `
             <div class="form-group">
                 <label>Event Name:</label>
