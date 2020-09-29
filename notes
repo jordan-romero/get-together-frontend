@@ -4,5 +4,5 @@
 [X] - strftime
 [] - full CRUD on Occasions
 [] - build out categories index 
-[] - reduce for total cost of occasion
+[X] - reduce for total cost of occasion
 [X] - moves home to js 
