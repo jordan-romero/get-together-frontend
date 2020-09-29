@@ -51,7 +51,7 @@ class Occasion {
         addBtn.innerText = "Create a Get-Together"
         app.appendChild(addBtn) 
 
-        Occasion.eventListenerHandler(addBtn)
+        // Occasion.eventListenerHandler(addBtn)
     }
     
 }
