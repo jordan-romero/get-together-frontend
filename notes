@@ -1,7 +1,7 @@
 [X] - move form to its own JS file 
-[] - if statements to reuse current form code
+[] - if statements to reuse current form code 
 [] - catch errors
-[] - strftime
+[X] - strftime
 [] - full CRUD on Occasions
 [] - build out categories index 
 [] - reduce for total cost of occasion

@@ -36,11 +36,19 @@ class Occasion {
         occEventsUl.className = 'ul list-unstyled'
         occEventsUl.id = 'occ-event-list'
         occEventsUl.innerText = 'Scheduled Events:'
+        let costArr = []
+        const reducer = (accumulator, currentValue) => accumulator + currentValue;
         this.occasion.events.forEach(event => {
             let eventLi = document.createElement('li')
+            costArr.push(event.cost)
             eventLi.innerText = `${event.name} will cost ${event.cost} dollars.`
             occEventsUl.appendChild(eventLi)
         })
+        const totalCostDiv = document.createElement('div')
+        const totalCost = costArr.reduce(reducer)
+        totalCostDiv.className = 'card-footer'
+        totalCostDiv.innerText = `Total Cost: ${totalCost}`
+        occEventsUl.appendChild(totalCostDiv)
         return occEventsUl
     }
 
