@@ -1,7 +1,8 @@
-[] - move form to its own JS file 
+[X] - move form to its own JS file 
 [] - if statements to reuse current form code
 [] - catch errors
 [] - strftime
 [] - full CRUD on Occasions
 [] - build out categories index 
 [] - reduce for total cost of occasion
+[X] - moves home to js 

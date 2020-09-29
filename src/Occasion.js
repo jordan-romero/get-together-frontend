@@ -14,7 +14,7 @@ class Occasion {
     }
 
     cardContent(card) {
-        const { name, date, time } = this.occasion
+        const { name, date_format, time_format } = this.occasion
         const occNameDiv = document.createElement('div')
         occNameDiv.className = "h2 card-header"
         occNameDiv.id = 'occ-div'
@@ -22,11 +22,11 @@ class Occasion {
         const occDateDiv = document.createElement('div')
         occDateDiv.className = 'h3'
         occDateDiv.id = 'occ-date-div'
-        occDateDiv.innerText = date
+        occDateDiv.innerText = date_format
         const occTimeDiv = document.createElement('div')
         occTimeDiv.className = 'h3'
         occTimeDiv.id = 'occ-time-div'
-        occTimeDiv.innerText = time
+        occTimeDiv.innerText = time_format
         const occEventsUl = this.renderOccEvents()
         card.append(occNameDiv, occDateDiv, occTimeDiv, occEventsUl)
     }
