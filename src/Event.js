@@ -84,6 +84,7 @@ class Event {
                 modal.style.display = "none"
                 modal.querySelector("form").remove()
             })
+            .catch(error => alert(error))
     }
 
 

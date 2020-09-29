@@ -47,7 +47,7 @@ class Occasion {
         const totalCostDiv = document.createElement('div')
         const totalCost = costArr.reduce(reducer)
         totalCostDiv.className = 'card-footer'
-        totalCostDiv.innerText = `Total Cost: ${totalCost}`
+        totalCostDiv.innerText = `Total Cost: $${totalCost}`
         occEventsUl.appendChild(totalCostDiv)
         return occEventsUl
     }
