@@ -77,4 +77,11 @@ class ApiService {
       })
       .then(res => res.json())
     }
+
+    static removeOccasion(occId){
+      return fetch(`${OCCASION_URL}/${occId}`, {
+        method: "DELETE"
+      })
+        .then(res=> res.json())
+    }
 }

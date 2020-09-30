@@ -19,6 +19,12 @@ class Occasion {
         occNameDiv.className = "h2 card-header"
         occNameDiv.id = 'occ-div'
         occNameDiv.innerText = name
+        const deleteBtn = document.createElement('button')
+        deleteBtn.className = 'btn'
+        deleteBtn.innerText = 'X'
+        deleteBtn.id = 'event-delete-btn'
+        occNameDiv.appendChild(deleteBtn)
+        this.deleteOccasion(deleteBtn, card)
         const occDateDiv = document.createElement('div')
         occDateDiv.className = 'h3'
         occDateDiv.id = 'occ-date-div'
@@ -82,7 +88,7 @@ class Occasion {
             occEventsUl.appendChild(eventLi)
         })
         const totalCostDiv = document.createElement('div')
-        if (costArr > 0) {
+        if (costArr.length > 0) {
             const totalCost = costArr.reduce(reducer)
             totalCostDiv.className = 'card-footer'
             totalCostDiv.innerText = `Total Cost: $${totalCost}`
@@ -99,6 +105,12 @@ class Occasion {
         app.appendChild(addBtn) 
 
         OccasionForm.addOccasionHandler(addBtn)
+    }
+
+    deleteOccasion(deleteBtn, card) {
+        deleteBtn.addEventListener('click', () => {
+            ApiService.removeOccasion(this.occasion.id).then(card.remove())
+        })
     }
     
 }
