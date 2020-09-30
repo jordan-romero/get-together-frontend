@@ -8,6 +8,8 @@
 [X] - strftime
 [X] - full CRUD on Occasions
 [] - build out categories index 
+    -css 
+    [X] - displays names
 [X] - reduce for total cost of occasion
 [X] - moves home to js 
 [] - add btns that direct to other pages on each js page 
