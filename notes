@@ -1,6 +1,8 @@
 [X] - move form to its own JS file 
 [] - if statements to reuse current form code 
 [] - catch errors
+    [X] - event patch
+    [] - event post 
 [X] - strftime
 [] - full CRUD on Occasions
 [] - build out categories index 

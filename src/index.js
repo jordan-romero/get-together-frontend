@@ -28,8 +28,6 @@ function displayEvents(){
     
     eventBtn.addEventListener("click", () => {
         app.innerHTML = ""
-        // body.style.backgroundColor = '#fae29f'
-        // body.style.backgroundImage = 'none'
         body.style.backgroundImage = "url(https://images.unsplash.com/photo-1601191905893-d270babd8c87?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80)"
         initEvents(); 
         Event.addEventBtn(); 
@@ -45,6 +43,7 @@ function initEvents() {
 function displayOccasions(){
   occasionBtn.addEventListener('click', () => {
     app.innerHTML = ''
+    body.style.backgroundImage = "url(https://images.unsplash.com/photo-1601191905893-d270babd8c87?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80)"
     initOccasions(); 
     Occasion.addOccasionBtn(); 
   })

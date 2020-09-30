@@ -18,8 +18,6 @@ class ApiService {
         .then(response => {
           if (response.ok) {
             return response.json()
-          } else {
-            throw Error("Bad request")
           }
         })
     }
@@ -52,4 +50,31 @@ class ApiService {
       .then(res => res.json())
     }
   
+    static postOccasion(newOccasion){
+    
+      return fetch(OCCASION_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json", 
+          "Accept": "application/json" 
+        },
+        body: JSON.stringify(newOccasion)
+      })
+        .then(response => {
+          if (response.ok) {
+            return response.json()
+          }
+        })
+    }
+
+    static updateOccasion = (occId, occasion) => {
+      return fetch(`${OCCASION_URL}/${occId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(occasion),
+      })
+      .then(res => res.json())
+    }
 }

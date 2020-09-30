@@ -28,7 +28,44 @@ class Occasion {
         occTimeDiv.id = 'occ-time-div'
         occTimeDiv.innerText = time_format
         const occEventsUl = this.renderOccEvents()
+        const editBtn = document.createElement('button')
+        editBtn.className = 'btn btn-sm'
+        editBtn.id = 'edit-btn'
+        editBtn.innerText = 'Edit'
+        occEventsUl.append(editBtn)
+        const editOccForm = document.createElement('form')
+        OccasionForm.editOccasionFormHandler(editBtn, editOccForm, name, date_format, time_format)
+        this.handleEditSubmit(editOccForm, card)
         card.append(occNameDiv, occDateDiv, occTimeDiv, occEventsUl)
+    }
+
+    handleEditSubmit(editOccForm, card) {
+        editOccForm.addEventListener("submit", (e) => {
+            e.preventDefault()
+            const data = {
+                name: e.target.name.value,
+                date: e.target.date.value,
+                time: e.target.time.value,
+            }
+            this.updateOccHandler(data, card)
+
+        })
+    }
+
+    updateOccHandler(data, card) {
+        ApiService.updateOccasion(this.occasion.id, data)
+            .then(updatedOccasion => {
+                if (updatedOccasion.errors){
+                    alert(updatedOccasion.errors)
+                } else {
+                    this.occasion = updatedOccasion
+                    card.innerHTML = ''
+                    this.cardContent(card)
+                    modal.style.display = "none"
+                    modal.querySelector("form").remove()
+                }
+            })
+            .catch(error => alert(error))
     }
 
     renderOccEvents() {
@@ -45,9 +82,11 @@ class Occasion {
             occEventsUl.appendChild(eventLi)
         })
         const totalCostDiv = document.createElement('div')
-        const totalCost = costArr.reduce(reducer)
-        totalCostDiv.className = 'card-footer'
-        totalCostDiv.innerText = `Total Cost: $${totalCost}`
+        if (costArr > 0) {
+            const totalCost = costArr.reduce(reducer)
+            totalCostDiv.className = 'card-footer'
+            totalCostDiv.innerText = `Total Cost: $${totalCost}`
+        }
         occEventsUl.appendChild(totalCostDiv)
         return occEventsUl
     }
@@ -59,7 +98,7 @@ class Occasion {
         addBtn.innerText = "Create a Get-Together"
         app.appendChild(addBtn) 
 
-        // Occasion.eventListenerHandler(addBtn)
+        OccasionForm.addOccasionHandler(addBtn)
     }
     
 }
