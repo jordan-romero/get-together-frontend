@@ -78,11 +78,15 @@ class Event {
     updateEventHandler(data, card) {
         ApiService.updateEvent(this.event.id, data)
             .then(updatedEvent => {
-                this.event = updatedEvent
-                card.innerHTML = ''
-                this.cardContent(card)
-                modal.style.display = "none"
-                modal.querySelector("form").remove()
+                if (updatedEvent.errors){
+                    alert(updatedEvent.errors)
+                } else {
+                    this.event = updatedEvent
+                    card.innerHTML = ''
+                    this.cardContent(card)
+                    modal.style.display = "none"
+                    modal.querySelector("form").remove()
+                }
             })
             .catch(error => alert(error))
     }

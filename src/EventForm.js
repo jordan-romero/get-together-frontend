@@ -122,7 +122,11 @@ class EventForm {
     static postEvent(newEvent, event) {
         ApiService.postEvent(newEvent)
             .then(event => {
+                if (event.errors) {
+                    alert(event.errors)
+                } else {
                 new Event(event)
+                }
             })
             .catch(error => alert(error))
         event.target.reset()
