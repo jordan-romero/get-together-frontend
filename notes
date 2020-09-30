@@ -3,8 +3,10 @@
 [] - catch errors
     [X] - event patch
     [] - event post 
+    [X] - occasion patch
+    [] - occasion post
 [X] - strftime
-[] - full CRUD on Occasions
+[X] - full CRUD on Occasions
 [] - build out categories index 
 [X] - reduce for total cost of occasion
 [X] - moves home to js 

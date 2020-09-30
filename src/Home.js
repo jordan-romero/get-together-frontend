@@ -39,6 +39,7 @@ class Home {
         eventBtn.id = 'event-btn';
         eventBtn.innerText = 'Events';
         eventBtnDiv.append(eventBtn);
+
         const occasionBtnDiv = document.createElement('div');
         occasionBtnDiv.className = 'row'
         subheader.append(occasionBtnDiv);
@@ -46,5 +47,14 @@ class Home {
         occasionBtn.id = 'occasion-btn';
         occasionBtn.innerText = 'get-togethers';
         occasionBtnDiv.appendChild(occasionBtn);
+
+        const categoriesBtnDiv = document.createElement('div')
+        categoriesBtnDiv.className = 'row'
+        subheader.append(categoriesBtnDiv);
+        categoriesBtn.className = 'btn';
+        categoriesBtn.id = 'categories-btn'
+        categoriesBtn.innerText = 'Categories'
+        categoriesBtnDiv.appendChild(categoriesBtn)
+
       }
 }

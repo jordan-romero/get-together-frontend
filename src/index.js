@@ -8,15 +8,17 @@ const logo = document.querySelector('#logo')
 const app = document.createElement('div')
 const eventBtn = document.createElement('button')
 const occasionBtn = document.createElement('button')
+const categoriesBtn = document.createElement('button')
 const modal = document.querySelector('#myModal')
 const modalContent = document.querySelector('.modal-content')
 
 
 createAppDiv();
 displayEvents(); 
-Home.createHeaderDiv();
 displayOccasions(); 
+displayCategories();
 Home.renderHome(); 
+Home.createHeaderDiv();
 
 function createAppDiv() {
     app.setAttribute('id', 'app-div')
@@ -52,6 +54,20 @@ function displayOccasions(){
 function initOccasions() {
   ApiService.getAllOccasions().then(occasions => {
     occasions.forEach(occasion => new Occasion(occasion))
+  })
+}
+
+function displayCategories(){
+  categoriesBtn.addEventListener('click', () => {
+    app.innerHTML = ''
+    body.style.backgroundImage = "url(https://images.unsplash.com/photo-1601191905893-d270babd8c87?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80)"
+    initCategories(); 
+  })
+}
+
+function initCategories() {
+  ApiService.getAllCategories().then(categories => {
+    categories.forEach(category => new Category(category))
   })
 }
 
