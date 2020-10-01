@@ -67,6 +67,7 @@ class Occasion {
             occEventsUl.appendChild(eventLi)
         })
         const totalCostP = document.createElement('p')
+        totalCostP.id = 'total-cost-p'
         if (costArr.length > 0) {
             const totalCost = costArr.reduce(reducer)
             totalCostP.innerText = `Total Cost: $${totalCost}`

@@ -216,3 +216,10 @@ body {
   margin-top: .5rem;
 }
 
+#total-cost-p {
+  color: #344357;
+}
+
+#card-footer-p {
+  color: #344357;
+}
