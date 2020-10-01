@@ -55,11 +55,11 @@ class OccasionForm {
     static postOccasion(newOccasion, event) {
         ApiService.postOccasion(newOccasion)
             .then(occasion => {
-                // if (occasion.errors) {
-                //     alert(occasion.errors)
-                // } else {
+                if (occasion.errors) {
+                    alert(occasion.errors)
+                } else {
                 new Occasion(occasion)
-                // }
+                }
             })
             .catch(error => alert(error))
         event.target.reset()

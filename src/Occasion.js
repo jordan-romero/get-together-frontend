@@ -38,11 +38,21 @@ class Occasion {
         editBtn.className = 'btn btn-sm'
         editBtn.id = 'edit-btn'
         editBtn.innerText = 'Edit'
-        occEventsUl.append(editBtn)
+        Occasion.createOccasionEvent(occEventsUl, editBtn)
+        
         const editOccForm = document.createElement('form')
         OccasionForm.editOccasionFormHandler(editBtn, editOccForm, name, date_format, time_format)
         this.handleEditSubmit(editOccForm, card)
         card.append(occNameDiv, occDateDiv, occTimeDiv, occEventsUl)
+    }
+
+    static createOccasionEvent(occEventsUl, editBtn) {
+        const addEventbtn = document.createElement('button')
+        addEventbtn.innerText = 'Add Event'
+        occEventsUl.append(editBtn, addEventbtn)
+        addEventbtn.addEventListener('click', () => {
+            OccasionEventForm.createOccasionEventForm()
+        })
     }
 
     handleEditSubmit(editOccForm, card) {
@@ -112,5 +122,37 @@ class Occasion {
             ApiService.removeOccasion(this.occasion.id).then(card.remove())
         })
     }
+
+   static postOccasionEvent(eventForm, occId, e, card) {
+        const occasionId = card.dataset.id
+        console.log(occasionId)
+        ApiService.postOccEvent(eventForm, occId)
+            .then(response => {
+                console.log(response)
+                // this.occasion.events.push(response)
+                
+                // card.innerHTML = ''
+                // this.cardContent(card)
+                }
+            )
+            .catch(error => alert(error))
+        
+        e.target.reset()
+        modal.querySelector("form").remove()
+    }
+
+    static handleFormSubmit(e, occId) {
+        e.preventDefault()
+        modal.style.display = "none"
+        const eventForm = {
+          name: e.target["name"].value,
+          description: e.target["description"].value,
+          location: e.target["location"].value,
+          duration: e.target["duration"].value,
+          cost: e.target["cost"].value,
+          category_name: e.target.category.value
+        }
+        Occasion.postOccasionEvent(eventForm, occId, e)
+      }
     
 }
