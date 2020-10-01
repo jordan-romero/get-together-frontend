@@ -33,25 +33,53 @@ class Occasion {
         occTimeDiv.className = 'h3'
         occTimeDiv.id = 'occ-time-div'
         occTimeDiv.innerText = time_format
-        const occEventsUl = this.renderOccEvents()
+        
+        const cardFooterP = document.createElement('p')
+        cardFooterP.className = 'card-footer'
         const editBtn = document.createElement('button')
         editBtn.className = 'btn btn-sm'
         editBtn.id = 'edit-btn'
         editBtn.innerText = 'Edit'
+    
+        const { totalCostP, occEventsUl } = this.renderEvents()
+        cardFooterP.append(editBtn, totalCostP)
+    
         Occasion.createOccasionEvent(occEventsUl, editBtn)
         
         const editOccForm = document.createElement('form')
         OccasionForm.editOccasionFormHandler(editBtn, editOccForm, name, date_format, time_format)
         this.handleEditSubmit(editOccForm, card)
-        card.append(occNameDiv, occDateDiv, occTimeDiv, occEventsUl)
+        card.append(occNameDiv, occDateDiv, occTimeDiv, occEventsUl, cardFooterP)
+    }
+
+    renderEvents() {
+        const occEventsUl = document.createElement('ul')
+        occEventsUl.className = 'ul list-unstyled'
+        occEventsUl.id = 'occ-event-list'
+        occEventsUl.innerText = 'Scheduled Events:'
+        let costArr = []
+        const reducer = (accumulator, currentValue) => accumulator + currentValue
+        this.occasion.events.forEach(event => {
+            let eventLi = document.createElement('li')
+            eventLi.id = 'occ-event-li'
+            costArr.push(event.cost)
+            eventLi.innerText = `${event.name} will cost ${event.cost} dollars.`
+            occEventsUl.appendChild(eventLi)
+        })
+        const totalCostP = document.createElement('p')
+        if (costArr.length > 0) {
+            const totalCost = costArr.reduce(reducer)
+            totalCostP.innerText = `Total Cost: $${totalCost}`
+        }
+        return { totalCostP, occEventsUl }
     }
 
     static createOccasionEvent(occEventsUl, editBtn) {
         const addEventBtn = document.createElement('button')
-        addEventBtn.className = 'btn'
+        addEventBtn.className = 'btn btn-sm'
         addEventBtn.id = 'add-event-btn'
         addEventBtn.innerText = 'Add Event'
-        occEventsUl.append(editBtn, addEventBtn)
+        occEventsUl.append(addEventBtn)
         addEventBtn.addEventListener('click', () => {
             OccasionEventForm.createOccasionEventForm()
         })
@@ -86,29 +114,6 @@ class Occasion {
             .catch(error => alert(error))
     }
 
-    renderOccEvents() {
-        const occEventsUl = document.createElement('ul')
-        occEventsUl.className = 'ul list-unstyled'
-        occEventsUl.id = 'occ-event-list'
-        occEventsUl.innerText = 'Scheduled Events:'
-        let costArr = []
-        const reducer = (accumulator, currentValue) => accumulator + currentValue;
-        this.occasion.events.forEach(event => {
-            let eventLi = document.createElement('li')
-            eventLi.id = 'occ-event-li'
-            costArr.push(event.cost)
-            eventLi.innerText = `${event.name} will cost ${event.cost} dollars.`
-            occEventsUl.appendChild(eventLi)
-        })
-        const totalCostDiv = document.createElement('div')
-        totalCostDiv.className = 'card-footer'
-        if (costArr.length > 0) {
-            const totalCost = costArr.reduce(reducer)
-            totalCostDiv.innerText = `Total Cost: $${totalCost}`
-        }
-        occEventsUl.appendChild(totalCostDiv)
-        return occEventsUl
-    }
 
     static addOccasionBtn = () => {
         const addBtn = document.createElement('button')
