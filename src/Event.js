@@ -31,7 +31,7 @@ class Event {
         eventDesc.innerText = description
         const occP = document.createElement('p')
         occP.id = 'occ-p'
-        occP.innerText = this.event.occasion.name
+        occP.innerText = `Get-Together: ${this.event.occasion.name}`
         const eventLocation = document.createElement('p')
         eventLocation.id = 'location-p'
         eventLocation.className = 'card-body'
@@ -39,7 +39,7 @@ class Event {
         const eventDurationCost = document.createElement('p')
         eventDurationCost.id = 'dur-cost-p'
         eventDurationCost.className = 'card-footer'
-        eventDurationCost.innerText = `${name} will cost ${cost} dollars and will be ${duration} long.`
+        eventDurationCost.innerText = `Total Cost: $${cost} Duration: ${duration} hours.`
         const editBtn = document.createElement('button')
         editBtn.className = 'btn btn-sm'
         editBtn.id = 'edit-btn'

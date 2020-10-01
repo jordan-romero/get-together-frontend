@@ -6,8 +6,8 @@ class OccasionEventForm {
         occEventForm.id = 'event-form'
         modalContent.append(occEventForm)
         const categorySelector = OccasionEventForm.occEventFormContent(occEventForm)
-        occEventForm.categoryDropdown(categorySelector)
-        occEventForm.addEventListener('submit', occEventForm.handleFormSubmit)
+        OccasionEventForm.categoryDropdown(categorySelector)
+        occEventForm.addEventListener('submit', OccasionEventForm.handleFormSubmit)
     }
 
     static occEventFormContent(occEventForm){
@@ -77,9 +77,24 @@ class OccasionEventForm {
         return categorySelector
     }
 
+    static categoryDropdown(categorySelector, selectedCategory) {
+        ApiService.getAllCategories(selectedCategory)
+            .then(categories => {
+                categories.forEach(category => {
+                    let option = document.createElement("option")
+                    option.textContent = category.name
+                    option.value = category.name
+                    if(selectedCategory && selectedCategory === category.name){
+                        option.selected = true
+                      }
+                    categorySelector.appendChild(option)
+                })
+            })
+        }
+
     static postOccasionEvent(occEventForm, e, card) {
         
-        ApiService.postOccEvent(occEventForm, occId)
+        ApiService.postOccEvent(occEventForm)
             .then(response => {
                 console.log(response)
                 // this.occasion.events.push(response)
@@ -105,6 +120,6 @@ class OccasionEventForm {
           cost: e.target["cost"].value,
           category_name: e.target.category.value
         }
-        OccasionoccEventForm.postOccasionEvent(occEventForm, e)
+        OccasionEventForm.postOccasionEvent(occEventForm, e)
       }
 }

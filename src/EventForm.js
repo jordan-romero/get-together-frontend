@@ -52,6 +52,7 @@ class EventForm {
         eventDurationLabel.innerText = "Event Duration:"
         const eventDurationInput = document.createElement('input')
         eventDurationInput.name = 'duration'
+        eventDurationInput.type = 'number'
         eventDurationInput.className = 'form-control'
         eventDurationDiv.append(eventDurationLabel, eventDurationInput)
 

@@ -7,7 +7,8 @@ body {
    url(https://images.unsplash.com/photo-1599751449318-f55b9187cdb4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80); 
    background-size: 100%;
    background-attachment: fixed;
-   font-family: 'Open Sans', sans-serif;
+   font-family: 'Balsamiq Sans', cursive;
+   font-weight: bold;
 }
 
 #header {
@@ -102,16 +103,25 @@ body {
 
 #desc-p {
   color: #344357;
+   
+  font-size: large;
+}
+
+#occ-p {
+  color: #344357;
+  
+  font-size: large;
 }
 
 #location-p {
   color: #344357;
-  font-weight: bold;
+  
   font-size: x-large;
 }
 
 #dur-cost-p {
   color: #344357; 
+  padding-right: 1rem;
 }
 
 #edit-btn {
@@ -174,6 +184,22 @@ body {
   background-color: #6b7a8f;
   color: #f7c331;
   margin-bottom: 2rem;
+}
+
+#occ-date-div{
+  color: #6b7a8f;
+}
+
+#occ-time-div{
+  color: #6b7a8f;
+}
+
+#occ-event-list{
+  color: #6b7a8f;
+}
+
+#occ-event-li{
+  color: #6b7a8f;
 }
 
 #cat-div {
