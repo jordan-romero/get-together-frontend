@@ -29,6 +29,9 @@ class Event {
         eventDesc.className = 'card-body'
         eventDesc.id = 'desc-p'
         eventDesc.innerText = description
+        const occP = document.createElement('p')
+        occP.id = 'occ-p'
+        occP.innerText = this.event.occasion.name
         const eventLocation = document.createElement('p')
         eventLocation.id = 'location-p'
         eventLocation.className = 'card-body'
@@ -46,7 +49,7 @@ class Event {
         EventForm.editEventFormHandler(editBtn, editEventForm, name, description, location, duration, cost)
         this.handleEditSubmit(editEventForm, card)
         this.renderCardBackground(card)
-        card.append(eventName, eventDesc, eventLocation, eventDurationCost)
+        card.append(eventName, eventDesc, occP, eventLocation, eventDurationCost)
 
 }
 
@@ -68,7 +71,9 @@ class Event {
                 description: e.target.description.value,
                 location: e.target.location.value,
                 duration: e.target.duration.value,
-                cost: e.target.cost.value
+                cost: e.target.cost.value,
+                category_name: e.target.category.value,
+                occasion_name: e.target.occasion.value
             }
             this.updateEventHandler(data, card)
 
