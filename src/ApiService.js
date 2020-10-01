@@ -16,9 +16,7 @@ class ApiService {
         body: JSON.stringify(newEvent)
       })
         .then(response => {
-          if (response.ok) {
             return response.json()
-          }
         })
     }
 
@@ -61,9 +59,7 @@ class ApiService {
         body: JSON.stringify(newOccasion)
       })
         .then(response => {
-          if (response.ok) {
             return response.json()
-          }
         })
     }
 

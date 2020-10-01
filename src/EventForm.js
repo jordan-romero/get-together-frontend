@@ -121,11 +121,12 @@ class EventForm {
 
     static postEvent(newEvent, event) {
         ApiService.postEvent(newEvent)
-            .then(event => {
-                if (newEvent.errors) {
-                    alert(newEvent.errors)
+            .then(response => {
+                console.log(response)
+                if (response.errors) {
+                    alert(response.errors)
                 } else {
-                new Event(event)
+                new Event(response)
                 }
             })
             .catch(error => alert(error))
