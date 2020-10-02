@@ -201,9 +201,22 @@ body {
   color: #6b7a8f;
 }
 
-#occ-event-li{
+#occ-event-li {
   color: #6b7a8f;
 }
+
+.popover-header {
+  background-color: #6b7a8f;
+  color: #f7c331;
+  font-size: x-large;
+}
+
+.popover-body {
+  background-color: #6b7a8f;
+  color: #f7882f;
+  font-size: large;
+}
+
 
 #cat-div {
   font-family: 'Rock Salt', cursive;

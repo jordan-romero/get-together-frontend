@@ -65,11 +65,16 @@ class Occasion {
             eventLi.id = 'occ-event-li'
             
             costArr.push(event.cost)
-            eventLi.innerHTML = `<li data-toggle="popover" title="Event Details" data-content="Event Description: ${event.description}">${event.name}
-            </li>`
+            eventLi.innerHTML = `<a tabindex="0" data-toggle="popover"  data-animation="true" 
+            data-html="true" data-trigger="focus" title="Event Details" 
+            data-content="<p><b>Event Description:</b></p> <p>${event.description}</p> 
+            <p><b>Event Cost:</b></p> <p>$${event.cost}</p>                       
+            <p><b>Event Location:</b></p> <p>${event.location}</p>
+            <p><b>Event Duration:</b></p> <p>${event.duration}</p>">${event.name}</a>`
             $(function () {
                 $('[data-toggle="popover"]').popover()
-                })
+            })
+            
             // eventLi.innerText = `${event.name} will cost ${event.cost} dollars.`
             occEventsUl.appendChild(eventLi)
         })
