@@ -81,8 +81,7 @@ class ApiService {
         .then(res=> res.json())
     }
 
-    static postOccEvent(eventForm, occId){
-    
+    static postOccEvent = (eventForm, occId) => {
       return fetch(`${OCCASION_EVENT_URL}/${occId}/events`, {
         method: "POST",
         headers: {

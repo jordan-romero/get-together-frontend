@@ -13,7 +13,7 @@ class Occasion {
         app.appendChild(card)
     }
 
-    cardContent(card) {
+   cardContent = (card) => {
         const { name, date_format, time_format } = this.occasion
         const occNameDiv = document.createElement('div')
         occNameDiv.className = "h2 card-header"
@@ -56,14 +56,21 @@ class Occasion {
         const occEventsUl = document.createElement('ul')
         occEventsUl.className = 'ul list-unstyled'
         occEventsUl.id = 'occ-event-list'
+        occEventsUl.dataset.id = this.occasion.id 
         occEventsUl.innerText = 'Scheduled Events:'
         let costArr = []
         const reducer = (accumulator, currentValue) => accumulator + currentValue
         this.occasion.events.forEach(event => {
             let eventLi = document.createElement('li')
             eventLi.id = 'occ-event-li'
+            
             costArr.push(event.cost)
-            eventLi.innerText = `${event.name} will cost ${event.cost} dollars.`
+            eventLi.innerHTML = `<li data-toggle="popover" title="Event Details" data-content="Event Description: ${event.description}">${event.name}
+            </li>`
+            $(function () {
+                $('[data-toggle="popover"]').popover()
+                })
+            // eventLi.innerText = `${event.name} will cost ${event.cost} dollars.`
             occEventsUl.appendChild(eventLi)
         })
         const totalCostP = document.createElement('p')
@@ -75,18 +82,20 @@ class Occasion {
         return { totalCostP, occEventsUl }
     }
 
-    static createOccasionEvent(occEventsUl, editBtn) {
+    static createOccasionEvent(occEventsUl) {
         const addEventBtn = document.createElement('button')
         addEventBtn.className = 'btn btn-sm'
         addEventBtn.id = 'add-event-btn'
         addEventBtn.innerText = 'Add Event'
         occEventsUl.append(addEventBtn)
-        addEventBtn.addEventListener('click', () => {
-            OccasionEventForm.createOccasionEventForm()
+        addEventBtn.addEventListener('click', (e) => {
+            const occId = parseInt(e.target.parentNode.dataset.id)
+            console.log(occId)
+            OccasionEventForm.createOccasionEventForm(occId)
         })
     }
 
-    handleEditSubmit(editOccForm, card) {
+    handleEditSubmit(editOccForm, card, occId) {
         editOccForm.addEventListener("submit", (e) => {
             e.preventDefault()
             const data = {
@@ -132,16 +141,15 @@ class Occasion {
         })
     }
 
-   static postOccasionEvent(eventForm, occId, e, card) {
-        const occasionId = card.dataset.id
-        console.log(occasionId)
-        ApiService.postOccEvent(eventForm, occId)
+    static postOccasionEvent = (occEventForm, occId, card, e) => {
+        
+        ApiService.postOccEvent(occEventForm, occId, card, e)
             .then(response => {
-                console.log(response)
+                console.log(card, "this is card")
+                console.log(occEventForm, "this is form")
+                console.log(occId)
                 // this.occasion.events.push(response)
-                
-                // card.innerHTML = ''
-                // this.cardContent(card)
+                this.renderEvents(occEventForm)
                 }
             )
             .catch(error => alert(error))
@@ -150,10 +158,10 @@ class Occasion {
         modal.querySelector("form").remove()
     }
 
-    static handleFormSubmit(e, occId) {
+    static handleFormSubmit = (e, occId) => {
         e.preventDefault()
         modal.style.display = "none"
-        const eventForm = {
+        const occEventForm = {
           name: e.target["name"].value,
           description: e.target["description"].value,
           location: e.target["location"].value,
@@ -161,7 +169,7 @@ class Occasion {
           cost: e.target["cost"].value,
           category_name: e.target.category.value
         }
-        Occasion.postOccasionEvent(eventForm, occId, e)
+        console.log(this)
+        Occasion.postOccasionEvent(occEventForm, occId, e)
       }
-    
 }

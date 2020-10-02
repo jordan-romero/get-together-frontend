@@ -1,13 +1,16 @@
 class OccasionEventForm {
 
-    static createOccasionEventForm() {
+
+    static createOccasionEventForm(occId) {
         modal.style.display = "block"
         const occEventForm = document.createElement('form')
         occEventForm.id = 'event-form'
         modalContent.append(occEventForm)
         const categorySelector = OccasionEventForm.occEventFormContent(occEventForm)
         OccasionEventForm.categoryDropdown(categorySelector)
-        occEventForm.addEventListener('submit', OccasionEventForm.handleFormSubmit)
+        occEventForm.addEventListener('submit', (e) => {
+            Occasion.handleFormSubmit(e, occId)
+        })
     }
 
     static occEventFormContent(occEventForm){
@@ -92,34 +95,35 @@ class OccasionEventForm {
             })
         }
 
-    static postOccasionEvent(occEventForm, e, card) {
+    // static postOccasionEvent = (occEventForm, occId, card, e) => {
         
-        ApiService.postOccEvent(occEventForm)
-            .then(response => {
-                console.log(response)
-                // this.occasion.events.push(response)
-                
-                // card.innerHTML = ''
-                // this.cardContent(card)
-                }
-            )
-            .catch(error => alert(error))
+    //     ApiService.postOccEvent(occEventForm, occId, e)
+    //         .then(response => {
+    //             // console.log(this.card)
+    //             console.log(response)
+    //             // this.occasion.events.push(response)
+            
+    //             .cardContent(card)
+    //             }
+    //         )
+    //         .catch(error => alert(error))
         
-        e.target.reset()
-        modal.querySelector("form").remove()
-    }
+    //     e.target.reset()
+    //     modal.querySelector("form").remove()
+    // }
 
-    static handleFormSubmit(e) {
-        e.preventDefault()
-        modal.style.display = "none"
-        const occEventForm = {
-          name: e.target["name"].value,
-          description: e.target["description"].value,
-          location: e.target["location"].value,
-          duration: e.target["duration"].value,
-          cost: e.target["cost"].value,
-          category_name: e.target.category.value
-        }
-        OccasionEventForm.postOccasionEvent(occEventForm, e)
-      }
+    // static handleFormSubmit(e, occId) {
+    //     e.preventDefault()
+    //     modal.style.display = "none"
+    //     const occEventForm = {
+    //       name: e.target["name"].value,
+    //       description: e.target["description"].value,
+    //       location: e.target["location"].value,
+    //       duration: e.target["duration"].value,
+    //       cost: e.target["cost"].value,
+    //       category_name: e.target.category.value
+    //     }
+    //     console.log(this)
+    //     OccasionEventForm.postOccasionEvent(occEventForm, occId, e)
+    //   }
 }
