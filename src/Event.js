@@ -31,7 +31,14 @@ class Event {
         eventDesc.innerText = description
         const occP = document.createElement('p')
         occP.id = 'occ-p'
-        occP.innerText = `Get-Together: ${this.event.occasion.name}`
+        occP.innerHTML = `<a tabindex="0" data-toggle="popover"  data-animation="true" 
+        data-html="true" data-trigger="focus" title="Get-Together Details" 
+        data-content="<p><b>Get-Together Date:</b></p> <p>${this.event.occasion.date_format}</p> 
+        <p><b>Get-Together Time:</b></p> <p>${this.event.occasion.time_format}</p>">${this.event.occasion.name}</a>`
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
+        // `Get-Together: ${this.event.occasion.name}`
         const eventLocation = document.createElement('p')
         eventLocation.id = 'location-p'
         eventLocation.className = 'card-body'
