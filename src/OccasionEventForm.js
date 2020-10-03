@@ -94,36 +94,4 @@ class OccasionEventForm {
                 })
             })
         }
-
-    // static postOccasionEvent = (occEventForm, occId, card, e) => {
-        
-    //     ApiService.postOccEvent(occEventForm, occId, e)
-    //         .then(response => {
-    //             // console.log(this.card)
-    //             console.log(response)
-    //             // this.occasion.events.push(response)
-            
-    //             .cardContent(card)
-    //             }
-    //         )
-    //         .catch(error => alert(error))
-        
-    //     e.target.reset()
-    //     modal.querySelector("form").remove()
-    // }
-
-    // static handleFormSubmit(e, occId) {
-    //     e.preventDefault()
-    //     modal.style.display = "none"
-    //     const occEventForm = {
-    //       name: e.target["name"].value,
-    //       description: e.target["description"].value,
-    //       location: e.target["location"].value,
-    //       duration: e.target["duration"].value,
-    //       cost: e.target["cost"].value,
-    //       category_name: e.target.category.value
-    //     }
-    //     console.log(this)
-    //     OccasionEventForm.postOccasionEvent(occEventForm, occId, e)
-    //   }
 }

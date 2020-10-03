@@ -60,7 +60,23 @@ class Event {
 
 }
 
-    static addEventBtn = () => {
+    static renderEventHero(){
+        const hero = document.createElement('div')
+        hero.className = 'jumbotron jumbotron-fluid'
+        app.appendChild(hero)
+        const heroDiv = document.createElement('div')
+        heroDiv.className = 'container'
+        const heroH1 = document.createElement('h1')
+        heroH1.className = 'display-3'
+        heroH1.innerText = 'Events'
+        const heroLead = document.createElement('p')
+        heroLead.className = 'lead'
+        heroLead.innerText = 'Welcome to the Events page! Create Events and add them to your Get-Togethers!'
+        const hr = document.createElement('hr')
+        hr.className = 'my-4'
+        const heroLead2 = document.createElement('p')
+        heroLead2.className = 'lead'
+        heroLead2.innerText = 'Try it out by clicking the add Event Button 👍🏼'
         const addBtn = document.createElement('button')
         addBtn.className = 'btn btn-lg mx-auto d-block'
         addBtn.id = 'add-event-btn'
@@ -68,7 +84,19 @@ class Event {
         app.appendChild(addBtn) 
 
         EventForm.eventListenerHandler(addBtn)
+        heroDiv.append(heroH1, heroLead, hr, heroLead2, addBtn)
+        hero.appendChild(heroDiv)
     }
+
+    // static addEventBtn = () => {
+    //     const addBtn = document.createElement('button')
+    //     addBtn.className = 'btn btn-lg mx-auto d-block'
+    //     addBtn.id = 'add-event-btn'
+    //     addBtn.innerText = "Create Event"
+    //     app.appendChild(addBtn) 
+
+    //     EventForm.eventListenerHandler(addBtn)
+    // }
 
     handleEditSubmit(editEventForm, card) {
         editEventForm.addEventListener("submit", (e) => {

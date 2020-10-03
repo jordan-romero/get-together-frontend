@@ -31,7 +31,8 @@ function displayEvents(){
         app.innerHTML = ""
         body.style.backgroundImage = "url(https://images.unsplash.com/photo-1601191905893-d270babd8c87?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80)"
         initEvents(); 
-        Event.addEventBtn(); 
+        Event.renderEventHero();
+        // Event.addEventBtn(); 
     })
 }
 
@@ -93,15 +94,3 @@ window.onclick = function(event) {
 $(function () {
   $('[data-toggle="popover"]').popover()
   })
-// // find all elements with data-content attribute
-// let popoverTargets = document.querySelectorAll('#occ-event-id'); // also a certain class would go fine
-// console.log(popoverTargets)
-// // initialize Popover for each element
-// Array.from(popoverTargets).map(
-//   popTarget => new BSN.Popover( popTarget, {
-//     placement: 'top', //string
-//     animation: 'slideNfade', // CSS class
-//     delay: 100, // integer
-//     dismissible: true, // boolean
-//   })
-// );

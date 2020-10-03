@@ -7,17 +7,23 @@
     [X] - occasion post
 [X] - strftime
 [X] - full CRUD on Occasions
-[] - build out categories index 
-    -css 
+[X] - build out categories index 
+    [X]-css 
     [X] - displays names
 [X] - reduce for total cost of occasion
 [X] - moves home to js 
 [] - add btns that direct to other pages on each js page 
 [X] - fix edit btn bug dupliccates form for events 
 
+
+CSS: 
+[] - fixes washed out logo on all pages but home 
+[] - adds a stylized nav that has buttons to all other pages on all pages but home 
+
 baby stretch: 
 
 [] - search 
+
 [] - google maps for location 
 
 bigggg stretch: 

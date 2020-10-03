@@ -67,10 +67,10 @@ class Occasion {
             costArr.push(event.cost)
             eventLi.innerHTML = `<a tabindex="0" data-toggle="popover"  data-animation="true" 
             data-html="true" data-trigger="focus" title="Event Details" 
-            data-content="<p><b>Event Description:</b></p> <p>${event.description}</p> 
+            data-content= "<p><b>Event Description:</b></p> <p>${event.description}</p> 
             <p><b>Event Cost:</b></p> <p>$${event.cost}</p>                       
             <p><b>Event Location:</b></p> <p>${event.location}</p>
-            <p><b>Event Duration:</b></p> <p>${event.duration}</p>">${event.name}</a>`
+            <p><b>Event Duration:</b></p> <p>${event.duration} hours</p>">${event.name}</a>`
             $(function () {
                 $('[data-toggle="popover"]').popover()
             })
