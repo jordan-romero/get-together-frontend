@@ -63,40 +63,45 @@ class Event {
     static renderEventHero(){
         const hero = document.createElement('div')
         hero.className = 'jumbotron jumbotron-fluid'
+        hero.id = 'hero'
         app.appendChild(hero)
         const heroDiv = document.createElement('div')
         heroDiv.className = 'container'
         const heroH1 = document.createElement('h1')
         heroH1.className = 'display-3'
         heroH1.innerText = 'Events'
+        heroH1.id = 'hero-h1'
         const heroLead = document.createElement('p')
         heroLead.className = 'lead'
         heroLead.innerText = 'Welcome to the Events page! Create Events and add them to your Get-Togethers!'
-        const hr = document.createElement('hr')
-        hr.className = 'my-4'
+        heroLead.id = 'hero-lead'
         const heroLead2 = document.createElement('p')
         heroLead2.className = 'lead'
-        heroLead2.innerText = 'Try it out by clicking the add Event Button 👍🏼'
-        const addBtn = document.createElement('button')
-        addBtn.className = 'btn btn-lg mx-auto d-block'
-        addBtn.id = 'add-event-btn'
-        addBtn.innerText = "Create Event"
-        app.appendChild(addBtn) 
-
-        EventForm.eventListenerHandler(addBtn)
-        heroDiv.append(heroH1, heroLead, hr, heroLead2, addBtn)
+        heroLead2.innerText = 'You can view more information about your Get-Together by clicking on it.'
+        heroLead2.id = 'hero-lead'
+        const hr = document.createElement('hr')
+        hr.className = 'my-4'
+        const heroLead3 = document.createElement('p')
+        heroLead3.className = 'lead'
+        heroLead3.innerText = 'Try it out by clicking "Create Event" 👍🏼'
+        heroLead3.id = 'hero-lead'
+        const addBtn = Event.addEventBtn()
+        heroDiv.append(heroH1, heroLead, heroLead2, hr, heroLead3, addBtn)
         hero.appendChild(heroDiv)
     }
 
-    // static addEventBtn = () => {
-    //     const addBtn = document.createElement('button')
-    //     addBtn.className = 'btn btn-lg mx-auto d-block'
-    //     addBtn.id = 'add-event-btn'
-    //     addBtn.innerText = "Create Event"
-    //     app.appendChild(addBtn) 
+    static addEventBtn() {
+        const addBtn = document.createElement('button')
+        addBtn.className = 'btn btn-lg'
+        addBtn.id = 'add-event-btn'
+        addBtn.innerText = "Create Event"
+        app.appendChild(addBtn)
 
-    //     EventForm.eventListenerHandler(addBtn)
-    // }
+        EventForm.eventListenerHandler(addBtn)
+        return addBtn
+    }
+
+
 
     handleEditSubmit(editEventForm, card) {
         editEventForm.addEventListener("submit", (e) => {

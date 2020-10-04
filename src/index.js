@@ -29,10 +29,10 @@ function displayEvents(){
     
     eventBtn.addEventListener("click", () => {
         app.innerHTML = ""
-        body.style.backgroundImage = "url(https://images.unsplash.com/photo-1601191905893-d270babd8c87?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80)"
+        body.style.backgroundImage = "url(https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=655&q=80)"
         initEvents(); 
         Event.renderEventHero();
-        // Event.addEventBtn(); 
+        
     })
 }
 
