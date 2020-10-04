@@ -70,7 +70,6 @@ class Event {
         $(function () {
             $('[data-toggle="popover"]').popover()
         })
-        // `Get-Together: ${this.event.occasion.name}`
         const eventLocation = document.createElement('p')
         eventLocation.id = 'location-p'
         eventLocation.className = 'card-body'

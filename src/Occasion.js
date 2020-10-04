@@ -88,6 +88,36 @@ class Occasion {
         return { totalCostP, occEventsUl }
     }
 
+    static renderOccasionHero(){
+        const hero = document.createElement('div')
+        hero.className = 'jumbotron jumbotron-fluid'
+        hero.id = 'hero'
+        app.appendChild(hero)
+        const heroDiv = document.createElement('div')
+        heroDiv.className = 'container'
+        const heroH1 = document.createElement('h1')
+        heroH1.className = 'display-3'
+        heroH1.innerText = 'Get-Togethers'
+        heroH1.id = 'hero-h1'
+        const heroLead = document.createElement('p')
+        heroLead.className = 'lead'
+        heroLead.innerText = 'Welcome to the Get-Together page! Create Get-Togethers and add Events to them by clicking on the "Add Event" button.!'
+        heroLead.id = 'hero-lead'
+        const heroLead2 = document.createElement('p')
+        heroLead2.className = 'lead'
+        heroLead2.innerText = 'You can view more information about your Events by clicking on them.'
+        heroLead2.id = 'hero-lead'
+        const hr = document.createElement('hr')
+        hr.className = 'my-4'
+        const heroLead3 = document.createElement('p')
+        heroLead3.className = 'lead'
+        heroLead3.innerText = 'Try it out by clicking "Create Get-Together" 👍🏼'
+        heroLead3.id = 'hero-lead'
+        const addBtn = Occasion.addOccasionBtn()
+        heroDiv.append(heroH1, heroLead, heroLead2, hr, heroLead3, addBtn)
+        hero.appendChild(heroDiv)
+    }
+
     static createOccasionEvent = (occEventsUl, card) => {
         console.log(this.occasion)
         const addEventBtn = document.createElement('button')
@@ -133,12 +163,13 @@ class Occasion {
 
     static addOccasionBtn = () => {
         const addBtn = document.createElement('button')
-        addBtn.className = 'btn btn-lg mx-auto d-block'
+        addBtn.className = 'btn btn-lg'
         addBtn.id = 'add-occ-btn'
         addBtn.innerText = "Create a Get-Together"
         app.appendChild(addBtn) 
 
         OccasionForm.addOccasionHandler(addBtn)
+        return addBtn
     }
 
     deleteOccasion(deleteBtn, card) {

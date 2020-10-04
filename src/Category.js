@@ -5,6 +5,21 @@ class Category {
         this.card = this.createCard()
     }
 
+    static renderCatHero() {
+        const hero = document.createElement('div')
+        hero.className = 'jumbotron jumbotron-fluid'
+        hero.id = 'hero'
+        app.appendChild(hero)
+        const heroDiv = document.createElement('div')
+        heroDiv.className = 'container'
+        const heroH1 = document.createElement('h1')
+        heroH1.className = 'display-3'
+        heroH1.innerText = 'Categories'
+        heroH1.id = 'hero-h1'
+        heroDiv.append(heroH1)
+        hero.appendChild(heroDiv)
+    }
+
     createCard = () => {
         const card = document.createElement('div')
         card.className = "card text-center"
