@@ -15,8 +15,11 @@ class Category {
         const heroH1 = document.createElement('h1')
         heroH1.className = 'display-3'
         heroH1.innerText = 'Categories'
+        const heroLead = document.createElement('p')
+        heroLead.innerText = 'Welcome to the Categories page! Here you can view all your events associated with their Categories!'
+        heroLead.id = 'hero-lead'
         heroH1.id = 'hero-h1'
-        heroDiv.append(heroH1)
+        heroDiv.append(heroH1, heroLead)
         hero.appendChild(heroDiv)
     }
 
