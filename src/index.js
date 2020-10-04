@@ -32,7 +32,7 @@ function displayEvents(){
         body.style.backgroundImage = "url(https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=655&q=80)"
         initEvents(); 
         Event.renderEventHero();
-        
+        // Event.sortAndFilter(); 
     })
 }
 

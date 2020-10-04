@@ -4,6 +4,37 @@ class Event {
         this.card = this.createCard()
     }
 
+    static sortAndFilter() {
+        const searchForm = document.createElement('form')
+        searchForm.className = 'form-inline'
+        searchForm.id = 'search-form'
+        searchForm.innerHTML = `
+        <div class="form-group">
+            <label class="ml-2 mr-1"for="sort">Sort By:</label>
+            <select class='form-control' name="sort" id="sort">
+                <option value="alphabetical">Alphabetical</option>
+                <option value="category">Category</option>
+                <option value="cost">Cost</option>
+            </select>
+            <label class="ml-2 mr-1"for="filter">Filter By:</label>
+            <select class='form-control' name="filter" id="filter">
+                <option value="all">All</option>
+                <option value="1">Art & Culture</option>
+                <option value="2">Comedy</option>
+                <option value="3">Outdoor Activities</option>
+                <option value="4">Film & TV</option>
+                <option value="5">Food & Drink</option>
+                <option value="6">Live Music</option>
+                <option value="7">LGBTQ+</option>
+                <option value="8">Other</option>
+            </select>
+            <label class="ml-2 mr-1"for="filter">Search by Name:</label>
+            <input class="form-control" name="query">
+        </div>
+        <button class="btn ml-3">Submit</button>
+     `
+    }
+
     createCard = () => {
         const card = document.createElement('div')
         card.className = "card text-center shadow-lg"
@@ -86,7 +117,35 @@ class Event {
         heroLead3.innerText = 'Try it out by clicking "Create Event" 👍🏼'
         heroLead3.id = 'hero-lead'
         const addBtn = Event.addEventBtn()
-        heroDiv.append(heroH1, heroLead, heroLead2, hr, heroLead3, addBtn)
+        const searchForm = document.createElement('form')
+        searchForm.className = 'form-inline'
+        searchForm.id = 'search-form'
+        searchForm.innerHTML = `
+        <div class="form-group">
+            <label class="ml-2 mr-1"for="sort">Sort By:</label>
+            <select class='form-control' name="sort" id="sort">
+                <option value="alphabetical">Alphabetical</option>
+                <option value="category">Category</option>
+                <option value="cost">Cost</option>
+            </select>
+            <label class="ml-2 mr-1"for="filter">Filter By:</label>
+            <select class='form-control' name="filter" id="filter">
+                <option value="all">All</option>
+                <option value="1">Art & Culture</option>
+                <option value="2">Comedy</option>
+                <option value="3">Outdoor Activities</option>
+                <option value="4">Film & TV</option>
+                <option value="5">Food & Drink</option>
+                <option value="6">Live Music</option>
+                <option value="7">LGBTQ+</option>
+                <option value="8">Other</option>
+            </select>
+            <label class="ml-2 mr-1"for="filter">Search by Name:</label>
+            <input class="form-control" name="query">
+        </div>
+        <button class="btn ml-3">Submit</button>
+     `
+        heroDiv.append(heroH1, heroLead, heroLead2, hr, heroLead3, addBtn, searchForm)
         hero.appendChild(heroDiv)
     }
 
