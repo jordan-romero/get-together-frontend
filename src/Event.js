@@ -126,7 +126,6 @@ class Event {
             <label class="ml-2 mr-1"for="sort">Sort By:</label>
             <select class='form-control' name="sort" id="sort">
                 <option value="alphabetical">Alphabetical</option>
-                <option value="category">Category</option>
                 <option value="cost">Cost</option>
             </select>
             <label class="ml-2 mr-1"for="filter">Filter By:</label>
@@ -159,10 +158,10 @@ class Event {
         this.sort = e.target.sort.value
         this.filter = e.target.filter.value
         this.search = e.target.query.value
-
         ApiService.searchEvents(this.sort, this.filter, this.search)
         .then(events => {
-            if(events.length < 1){
+            console.log(events)
+            if(events.length === 0){
               alert("No events found by that name")
             } else {
               eventContainer.innerHTML = ""
@@ -171,7 +170,7 @@ class Event {
               })
           }
           })
-          .catch(error => alert(error))
+        //   .catch(error => alert(error))
     }
 
     static addEventBtn() {
