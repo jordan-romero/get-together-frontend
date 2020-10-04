@@ -1,7 +1,7 @@
 class OccasionEventForm {
 
 
-    static createOccasionEventForm(occId) {
+    static createOccasionEventForm = (occId, card) => {
         modal.style.display = "block"
         const occEventForm = document.createElement('form')
         occEventForm.id = 'event-form'
@@ -9,11 +9,11 @@ class OccasionEventForm {
         const categorySelector = OccasionEventForm.occEventFormContent(occEventForm)
         OccasionEventForm.categoryDropdown(categorySelector)
         occEventForm.addEventListener('submit', (e) => {
-            Occasion.handleFormSubmit(e, occId)
+            Occasion.handleFormSubmit(e, occId, card)
         })
     }
 
-    static occEventFormContent(occEventForm){
+    static occEventFormContent = (occEventForm) => {
         const eventNameDiv = document.createElement('div')
         eventNameDiv.className = 'form-group'
         const eventNameLabel = document.createElement('label')

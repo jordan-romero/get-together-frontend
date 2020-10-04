@@ -45,7 +45,7 @@ class Occasion {
         const { totalCostP, occEventsUl } = this.renderEvents()
         cardFooterP.append(editBtn, totalCostP)
     
-        Occasion.createOccasionEvent(occEventsUl, editBtn)
+        Occasion.createOccasionEvent(occEventsUl, card)
         
         const editOccForm = document.createElement('form')
         OccasionForm.editOccasionFormHandler(editBtn, editOccForm, name, date_format, time_format)
@@ -88,7 +88,8 @@ class Occasion {
         return { totalCostP, occEventsUl }
     }
 
-    static createOccasionEvent(occEventsUl) {
+    static createOccasionEvent = (occEventsUl, card) => {
+        console.log(this.occasion)
         const addEventBtn = document.createElement('button')
         addEventBtn.className = 'btn btn-sm'
         addEventBtn.id = 'add-occ-event-btn'
@@ -96,12 +97,11 @@ class Occasion {
         occEventsUl.append(addEventBtn)
         addEventBtn.addEventListener('click', (e) => {
             const occId = parseInt(e.target.parentNode.dataset.id)
-            console.log(occId)
-            OccasionEventForm.createOccasionEventForm(occId)
+            OccasionEventForm.createOccasionEventForm(occId, card)
         })
     }
 
-    handleEditSubmit(editOccForm, card, occId) {
+    handleEditSubmit(editOccForm, card) {
         editOccForm.addEventListener("submit", (e) => {
             e.preventDefault()
             const data = {
@@ -147,15 +147,14 @@ class Occasion {
         })
     }
 
-    static postOccasionEvent = (occEventForm, occId, card, e) => {
-        
-        ApiService.postOccEvent(occEventForm, occId, card, e)
+    static postOccasionEvent = (e, occEventForm, occId, card) => {
+
+        ApiService.postOccEvent(occEventForm, occId, card)
             .then(response => {
-                console.log(card, "this is card")
-                console.log(occEventForm, "this is form")
-                console.log(occId)
+                // card.innerHTML = ''
+                // this.cardContent(response)
                 // this.occasion.events.push(response)
-                this.renderEvents(occEventForm)
+                // this.renderEvents(occEventForm)
                 }
             )
             .catch(error => alert(error))
@@ -164,8 +163,9 @@ class Occasion {
         modal.querySelector("form").remove()
     }
 
-    static handleFormSubmit = (e, occId) => {
+    static handleFormSubmit = (e, occId, card) => {
         e.preventDefault()
+        // console.log(card)
         modal.style.display = "none"
         const occEventForm = {
           name: e.target["name"].value,
@@ -175,7 +175,6 @@ class Occasion {
           cost: e.target["cost"].value,
           category_name: e.target.category.value
         }
-        console.log(this)
-        Occasion.postOccasionEvent(occEventForm, occId, e)
+        Occasion.postOccasionEvent(e, occEventForm, occId, card)
       }
 }

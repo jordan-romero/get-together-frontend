@@ -170,7 +170,7 @@ class Event {
               })
           }
           })
-        //   .catch(error => alert(error))
+          .catch(error => alert(error))
     }
 
     static addEventBtn() {
