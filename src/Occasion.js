@@ -8,6 +8,7 @@ class Occasion {
     createCard = () => {
         const card = document.createElement('div')
         card.className = "card text-center"
+        card.id = 'occ-card'
         card.dataset.id = this.occasion.id
         this.cardContent(card)
         app.appendChild(card)
@@ -90,7 +91,7 @@ class Occasion {
     static createOccasionEvent(occEventsUl) {
         const addEventBtn = document.createElement('button')
         addEventBtn.className = 'btn btn-sm'
-        addEventBtn.id = 'add-event-btn'
+        addEventBtn.id = 'add-occ-event-btn'
         addEventBtn.innerText = 'Add Event'
         occEventsUl.append(addEventBtn)
         addEventBtn.addEventListener('click', (e) => {

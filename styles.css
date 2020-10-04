@@ -86,17 +86,18 @@ body {
   color: rgb(242, 226, 198);
 }
 
-/* #add-event-btn {
-  background-color: transparent;
+#add-occ-event-btn {
+  background-color: #6b7a8f;
   color: #f7c331;
+  margin-top: 2rem;
   margin-bottom: 2rem;
-} */
+}
 
 .card {
   position: relative; 
   width: 50rem; 
   height: auto; 
-  background-color: #e1d3b8;
+  background-color: rgb(187, 178, 158);
   margin-bottom: 3rem; 
   display: block;
   margin: 0 auto; 
@@ -195,6 +196,18 @@ body {
 #occ-div {
   font-family: 'Rock Salt', cursive;
   color: #6b7a8f;
+}
+
+#occ-card {
+  position: relative; 
+  width: 50rem; 
+  height: auto; 
+  background-color: rgb(187, 178, 158);
+  margin-bottom: 3rem; 
+  display: block;
+  margin: 0 auto; 
+  float: none; 
+  margin-bottom: 2rem; 
 }
 
 #add-occ-btn {
