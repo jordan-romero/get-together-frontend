@@ -36,11 +36,12 @@ class Event {
     }
 
     createCard = () => {
+        app.appendChild(eventContainer)
         const card = document.createElement('div')
         card.className = "card text-center shadow-lg"
         card.dataset.id = this.event.id
         this.cardContent(card)
-        app.appendChild(card)
+        eventContainer.appendChild(card)
         return card
     }
 
@@ -143,10 +144,34 @@ class Event {
             <label class="ml-2 mr-1"for="filter">Search by Name:</label>
             <input class="form-control" name="query">
         </div>
-        <button class="btn ml-3">Submit</button>
+        <button class="btn ml-3" id="search-submit-btn">Submit</button>
      `
+
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault()
+            this.handleSearch(e)
+        })
         heroDiv.append(heroH1, heroLead, heroLead2, hr, heroLead3, addBtn, searchForm)
         hero.appendChild(heroDiv)
+    }
+
+    static handleSearch = (e) => {
+        this.sort = e.target.sort.value
+        this.filter = e.target.filter.value
+        this.search = e.target.query.value
+
+        ApiService.searchEvents(this.sort, this.filter, this.search)
+        .then(events => {
+            if(events.length < 1){
+              alert("No events found by that name")
+            } else {
+              eventContainer.innerHTML = ""
+              events.forEach( event => {
+                new Event(event)
+              })
+          }
+          })
+          .catch(error => alert(error))
     }
 
     static addEventBtn() {

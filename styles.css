@@ -70,7 +70,11 @@ body {
 }
 
 #search-form {
-  color: #6b7a8f; 
+  color: #f7c331; 
+}
+
+#search-submit-btn {
+  color: #f7c331; 
 }
 
 #hero {

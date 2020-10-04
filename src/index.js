@@ -6,6 +6,7 @@ const OCCASION_EVENT_URL = `${OCCASION_URL}`
 const body = document.querySelector('body')
 const logo = document.querySelector('#logo')
 const app = document.createElement('div')
+const eventContainer = document.createElement('div')
 const eventBtn = document.createElement('button')
 const occasionBtn = document.createElement('button')
 const categoriesBtn = document.createElement('button')

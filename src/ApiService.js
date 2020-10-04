@@ -5,6 +5,15 @@ class ApiService {
         .then(response => response.json())
     }
 
+    static searchEvents(sort, filter, query){
+      let sortParams = `?sort=${sort}`
+      let filterParams = `&filter=${filter}`
+      let queryParams = `&query=${query}`
+      return fetch(`${EVENT_URL}/${sortParams}${filterParams}${queryParams}`)
+      .then(res => res.json())
+    }
+  
+
     static postEvent(newEvent){
     
       return fetch(EVENT_URL, {
