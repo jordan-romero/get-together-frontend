@@ -142,7 +142,7 @@ body {
 
 #occ-p {
   color: #344357;
-  
+  text-decoration: underline;
   font-size: large;
 }
 
@@ -242,11 +242,15 @@ body {
 
 #occ-event-list{
   margin-top: 1rem;
-  color: rgb(43, 41, 55);
+  color: #6b7a8f;
+  font-size: x-large;
+  font-weight: bolder;
 }
 
 #occ-event-li {
   color: #6b7a8f;
+  font-size: large;
+  text-decoration: underline;
 }
 
 .popover-header {
