@@ -94,6 +94,13 @@ body {
   color: rgb(242, 226, 198);
 }
 
+.form-inline {
+  display: flex;
+  flex-flow: row wrap;
+  float: right;
+  margin-top: 1rem;
+}
+
 #add-occ-event-btn {
   background-color: #6b7a8f;
   color: #f7c331;
