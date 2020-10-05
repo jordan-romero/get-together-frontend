@@ -192,7 +192,6 @@ class Occasion {
                 card.innerHTML = ''
                 occInstance.occasion.events.push(response) 
                 occInstance.cardContent(occInstance.card)
-                // this.renderEvents(occEventForm)
                 }
             )
             .catch(error => alert(error))
