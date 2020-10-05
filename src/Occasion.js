@@ -3,6 +3,13 @@ class Occasion {
     constructor(occasion){
         this.occasion = occasion 
         this.card = this.createCard()
+        this.constructor.all.push(this)
+    }
+
+    static all = []
+
+    static findById(id) {
+        return this.all.find(element => element.occasion.id == id)
     }
 
     createCard = () => {
@@ -12,6 +19,7 @@ class Occasion {
         card.dataset.id = this.occasion.id
         this.cardContent(card)
         app.appendChild(card)
+        return card
     }
 
    cardContent = (card) => {
@@ -76,7 +84,6 @@ class Occasion {
                 $('[data-toggle="popover"]').popover()
             })
             
-            // eventLi.innerText = `${event.name} will cost ${event.cost} dollars.`
             occEventsUl.appendChild(eventLi)
         })
         const totalCostP = document.createElement('p')
@@ -119,7 +126,6 @@ class Occasion {
     }
 
     static createOccasionEvent = (occEventsUl, card) => {
-        console.log(this.occasion)
         const addEventBtn = document.createElement('button')
         addEventBtn.className = 'btn btn-sm'
         addEventBtn.id = 'add-occ-event-btn'
@@ -182,9 +188,10 @@ class Occasion {
 
         ApiService.postOccEvent(occEventForm, occId, card)
             .then(response => {
-                // card.innerHTML = ''
-                // this.cardContent(response)
-                // this.occasion.events.push(response)
+                const occInstance = Occasion.findById(occId)
+                card.innerHTML = ''
+                occInstance.occasion.events.push(response) 
+                occInstance.cardContent(occInstance.card)
                 // this.renderEvents(occEventForm)
                 }
             )

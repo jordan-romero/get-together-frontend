@@ -127,7 +127,7 @@ class EventForm {
     }
 
     static postEvent(newEvent, event) {
-        ApiService.postOccEvent(newEvent)
+        ApiService.postEvent(newEvent)
             .then(response => {
                 if (response.errors) {
                     alert(response.errors)

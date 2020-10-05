@@ -104,8 +104,8 @@ body {
 #add-occ-event-btn {
   background-color: #6b7a8f;
   color: #f7c331;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  /* margin-top: 2rem;
+  margin-bottom: 2rem; */
 }
 
 .card {
