@@ -17,6 +17,16 @@ git clone https://github.com/jordles113/get-together-frontend
 ```
 cd get-together-frontend
 
+## Usage
+
+To run rails server
+      
+      ./get-together-backend/rails s
+
+To run application 
+    
+      ./get-together-backend/open index.html
+
 ## Contributing 
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are greatly appreciated.
