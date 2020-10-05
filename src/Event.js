@@ -110,12 +110,16 @@ class Event {
         heroLead2.className = 'lead'
         heroLead2.innerText = 'You can view more information about your Get-Together by clicking on it.'
         heroLead2.id = 'hero-lead'
-        const hr = document.createElement('hr')
-        hr.className = 'my-4'
         const heroLead3 = document.createElement('p')
         heroLead3.className = 'lead'
-        heroLead3.innerText = 'Try it out by clicking "Create Event" 👍🏼'
+        heroLead3.innerText = 'You can use the sort and filter below to see your events by cost or alphabetically. Try searching by name 👇'
         heroLead3.id = 'hero-lead'
+        const hr = document.createElement('hr')
+        hr.className = 'my-4'
+        const heroLead4 = document.createElement('p')
+        heroLead4.className = 'lead'
+        heroLead4.innerText = 'Try it out by clicking "Create Event" 👍🏼'
+        heroLead4.id = 'hero-lead'
         const addBtn = Event.addEventBtn()
         const searchForm = document.createElement('form')
         searchForm.className = 'form-inline'
@@ -149,7 +153,7 @@ class Event {
             e.preventDefault()
             this.handleSearch(e)
         })
-        heroDiv.append(heroH1, heroLead, heroLead2, hr, heroLead3, addBtn, searchForm)
+        heroDiv.append(heroH1, heroLead, heroLead2, hr, heroLead3, heroLead4, addBtn, searchForm)
         hero.appendChild(heroDiv)
     }
 
