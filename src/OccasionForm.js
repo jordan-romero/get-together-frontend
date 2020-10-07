@@ -44,6 +44,7 @@ class OccasionForm {
         const occTimeInput = document.createElement('input')
         occTimeInput.type = 'time'
         occTimeInput.name = 'time'
+        occTimeInput.required = true
         occTimeInput.className = 'form-control'
         occTimeDiv.append(occTimeLabel, occTimeInput)
 
