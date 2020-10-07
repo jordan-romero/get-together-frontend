@@ -25,6 +25,7 @@ class EventForm {
         eventNameLabel.innerText = "Event Name:"
         const eventNameInput = document.createElement('input')
         eventNameInput.name = 'name'
+        eventNameInput.required = true
         eventNameInput.className = 'form-control'
         eventNameDiv.append(eventNameLabel, eventNameInput)
 
@@ -34,6 +35,7 @@ class EventForm {
         eventDescLabel.innerText = "Event Description:"
         const eventDescInput = document.createElement('textarea')
         eventDescInput.name = 'description'
+        eventDescInput.required = true
         eventDescInput.className = 'form-control'
         eventDescDiv.append(eventDescLabel, eventDescInput)
 
@@ -43,6 +45,7 @@ class EventForm {
         eventLocationLabel.innerText = "Event Location:"
         const eventLocationInput = document.createElement('textarea')
         eventLocationInput.name = 'location'
+        eventLocationInput.required = true
         eventLocationInput.className = 'form-control'
         eventLocationDiv.append(eventLocationLabel, eventLocationInput)
 
@@ -52,6 +55,7 @@ class EventForm {
         eventDurationLabel.innerText = "Event Duration:"
         const eventDurationInput = document.createElement('input')
         eventDurationInput.name = 'duration'
+        eventDurationInput.required = true
         eventDurationInput.type = 'number'
         eventDurationInput.className = 'form-control'
         eventDurationDiv.append(eventDurationLabel, eventDurationInput)
@@ -62,6 +66,7 @@ class EventForm {
         eventCostLabel.innerText = "Event Cost:"
         const eventCostInput = document.createElement('input')
         eventCostInput.name = 'cost'
+        eventCostInput.required = true
         eventCostInput.type = 'number'
         eventCostInput.className = 'form-control'
         eventCostDiv.append(eventCostLabel, eventCostInput)

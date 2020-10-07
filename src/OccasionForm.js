@@ -22,6 +22,7 @@ class OccasionForm {
         occNameLabel.innerText = "Get-Together Name:"
         const occNameInput = document.createElement('input')
         occNameInput.name = 'name'
+        occNameInput.required = true
         occNameInput.className = 'form-control'
         occNameDiv.append(occNameLabel, occNameInput)
 
@@ -32,6 +33,7 @@ class OccasionForm {
         const occDateInput = document.createElement('input')
         occDateInput.type = 'date'
         occDateInput.name = 'date'
+        occDateInput.required = true
         occDateInput.className = 'form-control'
         occDateDiv.append(occDateLabel, occDateInput)
 
