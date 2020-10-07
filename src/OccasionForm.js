@@ -92,16 +92,16 @@ class OccasionForm {
         editOccForm.innerHTML = ''
         editOccForm.innerHTML += `
             <div class="form-group">
-                <label>Event Name:</label>
-                <input name="name" value="${name}" class="form-control">
+                <label>Get-Together Name:</label>
+                <input name="name" required=true value="${name}" class="form-control">
             </div>
             <div class="form-group">
-                <label>Event Description:</label>
-                <textarea name="date" class="form-control">${date}</textarea>
+                <label>Get-Together Date:</label>
+                <textarea name="date" type=date required=true class="form-control">${date}</textarea>
             </div>
             <div class="form-group">
-                <label>Event Location:</label>
-                <textarea name="time" class="form-control">${time}</textarea>
+                <label>Get-Together Time:</label>
+                <textarea name="time" required=true class="form-control">${time}</textarea>
             </div>
             <button class="btn" id="event-submit">Submit</button>`
     }
