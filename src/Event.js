@@ -162,7 +162,6 @@ class Event {
         this.search = e.target.query.value
         ApiService.searchEvents(this.sort, this.filter, this.search)
         .then(events => {
-            console.log(events)
             if(events.length === 0){
               alert("No events found by that name")
             } else {
