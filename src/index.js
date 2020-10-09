@@ -93,6 +93,3 @@ window.onclick = function(event) {
 
 
 
-$(function () {
-  $('[data-toggle="popover"]').popover()
-  })
