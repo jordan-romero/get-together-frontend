@@ -22,7 +22,7 @@ Home.renderHome();
 Home.createHeaderDiv();
 
 function createAppDiv() {
-    app.setAttribute('id', 'app-div')
+    app.id = 'app-div'
     body.appendChild(app)
 }
 

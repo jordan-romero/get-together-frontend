@@ -13,7 +13,6 @@ class Event {
             <label class="ml-2 mr-1"for="sort">Sort By:</label>
             <select class='form-control' name="sort" id="sort">
                 <option value="alphabetical">Alphabetical</option>
-                <option value="category">Category</option>
                 <option value="cost">Cost</option>
             </select>
             <label class="ml-2 mr-1"for="filter">Filter By:</label>
