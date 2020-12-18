@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000'
+const BASE_URL = 'https://warm-gorge-22897.herokuapp.com'
 const EVENT_URL = `${BASE_URL}/events` 
 const CATEGORY_URL = `${BASE_URL}/categories`
 const OCCASION_URL = `${BASE_URL}/occasions`
